@@ -6,7 +6,7 @@ object Mouse extends App {
   val fg = new FunGraphics(300, 300)
 
   // This will handle the mouse
-  fg.addMouseListener(new MouseAdapter() {
+  /*fg.addMouseListener(new MouseAdapter() {
     override def mouseClicked(e: MouseEvent): Unit = {
       val event = e
       val whichButton = e.getButton
@@ -20,5 +20,5 @@ object Mouse extends App {
       // Draws a circle where the mouse was during click
       fg.drawFilledCircle(posx, posy, 5)
     }
-  })
+  })*/
 }

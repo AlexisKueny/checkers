@@ -7,19 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/fungraphics_1_5_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Checkers.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Board.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Mouse.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fungraphics-1.5.12.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fungraphicsTest.scala" afterDir="false" />
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="checkered board created">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mouse.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mouse.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fungraphicsTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/fungraphicsTest.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,11 +95,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1703413129789</updated>
-      <workItem from="1703413130860" duration="8726000" />
+      <workItem from="1703413130860" duration="10447000" />
     </task>
+    <task id="LOCAL-00001" summary="checkered board created">
+      <option name="closed" value="true" />
+      <created>1703422550965</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703422550965</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="checkered board created" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkered board created" />
   </component>
 </project>
