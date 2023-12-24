@@ -32,7 +32,7 @@ class Board {
         gamePhase match{
           case 0 => if ((posx > 50 && posx < 150)&&(posy > 50 && posy < 150)){
             //initial checker position
-            display.drawFilledCircle(posx, posy, 5)
+            checker(400,400,Color.red)
           }
 
         }
@@ -42,6 +42,10 @@ class Board {
         //display.drawFilledCircle(posx, posy, 5)
       }
     })
+  }
+  def checker(x: Int,y: Int, color: Color) : Unit ={
+    display.setColor(color)
+    display.drawFilledCircle(x,y,80)
   }
 }
 
