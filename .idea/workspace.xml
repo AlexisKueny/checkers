@@ -9,9 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="checker method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fungraphicsTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/fungraphicsTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fungraphicsTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +19,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="31f0c43c9df542c8fdcbcf5e0af592eb505c64f8" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2Zz7bfd72Yei3vcxsnMpMK9o3UA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -36,6 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DrawArrow.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.Mouse.executor": "Run",
     "Application.fungraphicsTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -58,9 +64,16 @@
       <recent name="C:\Users\alexi\IdeaProjects\Checkers\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.fungraphicsTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="DrawArrow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="DrawArrow" />
+      <module name="Checkers" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Checkers" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -82,6 +95,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Mouse" />
+        <item itemvalue="Application.fungraphicsTest" />
         <item itemvalue="Application.fungraphicsTest" />
         <item itemvalue="Application.Mouse" />
       </list>
@@ -134,6 +150,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="checkered board created" />
