@@ -1,28 +1,27 @@
 import java.awt.Color
 
 class Checker {
-  val diam : Int = 80
-  val spaceOccupancy : Array[Array[Int]] = Array.ofDim[Int](4,8)
-  val spaceCenterX : Array[Array[Int]] = Array.ofDim[Int](4,8)
-  val spaceCenterY : Array[Array[Int]] = Array.ofDim[Int](4,8)
-  val colB : Color = Color.RED //spaceOccupancy = 1
-  val colW : Color = Color.WHITE //spaceOccupancy = 2
+  val diam: Int = 100
+  val spaceOccupancy: Array[Array[Int]] = Array.ofDim[Int](8, 4)
+  val spaceCenterX: Array[Array[Int]] = Array.ofDim[Int](8, 4)
+  val spaceCenterY: Array[Array[Int]] = Array.ofDim[Int](8, 4)
+  val colB: Color = Color.RED //spaceOccupancy = 1
+  val colW: Color = new Color(192,192,192) //spaceOccupancy = 2
 
-  def checkerInit() : Unit ={
-    var x : Int = 50
-    var y : Int = - 50
-    for (j <- 0 to 7) {
+  def checkerInit(): Unit = {
+    var x: Int = 100
+    var y: Int = -100
+    for (i <- 0 to 7) {
       y += 100
-      if (x == 50) x = 150
-      if (x == 150) x = 50
-      for (i <- 0 to 3) {
+      if (i % 2 == 0) x = 100
+      if (i % 2 != 0) x = 0
+      for (j <- 0 to 3) {
         x += 200
-        println(x,y)
-        spaceCenterX(i)(j) = x - diam/2
-        spaceCenterY(i)(j) = y - diam/2
-        if (j < 3) spaceOccupancy(i)(j) = 1
-        if (j > 5) spaceOccupancy(i)(j) = 2
-        println(x,i,y,j)
+        spaceCenterX(i)(j) = x
+        spaceCenterY(i)(j) = y
+//        println(x,y)
+        if ( i < 3) spaceOccupancy(i)(j) = 1
+        if ( i > 4) spaceOccupancy(i)(j) = 2
       }
     }
   }

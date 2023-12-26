@@ -30,9 +30,12 @@ object Main extends App {
         gamePhase = 1
         //checker initialization
         checker.checkerInit()
-        //boardWithCheckers()
-        //draw all buttons
+        boardWithCheckers()
+        print("endphase0")
       }
+
+      //gamePhase = 1
+
     }
   })
 
@@ -73,6 +76,7 @@ object Main extends App {
         else display.setColor(checker.colW)
         px = checker.spaceCenterX(i)(j)
         py = checker.spaceCenterY(i)(j)
+        println(i,j)
         display.drawFilledCircle(px,py,checker.diam)
       }
     }
