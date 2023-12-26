@@ -9,6 +9,7 @@ object Main extends App {
   val display: FunGraphics = new FunGraphics(1200, 800)
   var gamePhase: Int = 0
   val checker: Checker = new Checker
+  var player : Int = 0
   var px = 0
   var py = 0
   var mb = 0
@@ -31,31 +32,19 @@ object Main extends App {
         //checker initialization
         checker.checkerInit()
         boardWithCheckers()
-        print("endphase0")
+        player = 2
       }
 
       //gamePhase = 1
 
+      //println(caseI,caseJ,boolCheck)
+      //Color possible moves
+      colorPossibleMoves()
+      //checker.colorMovesCheckerBlack(caseI,caseJ)
     }
   })
 
   //methods///////////////////////////////////////////////
-  /*def mouse(): (Int, Int, Int) = {
-    var posx: Int = 0
-    var posy: Int = 0
-    var mouseButton: Int = 0
-    display.addMouseListener(new MouseAdapter() {
-      override def mouseClicked(e: MouseEvent): Unit = {
-        val event = e
-        mouseButton = e.getButton
-
-        // Get the mouse position from the event
-        posx = event.getX
-        posy = event.getY
-      }
-    })
-    (posx, posy, mouseButton)
-  }*/
   def drawEmptyBoard(): Unit = {
     for (x <- 0 to 200; y <- 0 to 800) display.setPixel(x, y, new Color(150, 121, 105))
     for (x <- 301 to 999 by 200; y <- 0 to 800 by 200)
@@ -80,5 +69,17 @@ object Main extends App {
         display.drawFilledCircle(px,py,checker.diam)
       }
     }
+  }
+
+  //...
+  def colorPossibleMoves(): Unit = {
+    println(px,py,player)
+    val check = checker.checkSpace(px, py, player)
+    val boolCheck = check._1
+    if (!boolCheck) return
+    val caseI = check._2
+    val caseJ = check._3
+    if (player == 1) checker.colorMovesCheckerBlack(caseI,caseJ)
+
   }
 }

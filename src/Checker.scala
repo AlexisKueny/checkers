@@ -25,4 +25,17 @@ class Checker {
       }
     }
   }
+  def checkSpace(px: Int,py: Int, player : Int):(Boolean,Int,Int) ={
+    for (i <- 0 to 7;j <- 0 to 3){
+      if ((px >= spaceCenterX(i)(j)) && (px <= spaceCenterX(i)(j) + 100)){
+        if ((py >= spaceCenterY(i)(j)) && (py <= spaceCenterY(i)(j) + 100)){
+          if (spaceOccupancy(i)(j) == player) return (true,i,j)
+        }
+      }
+    }
+    (false,0,0)
+  }
+  def colorMovesCheckerBlack(i : Int, j : Int): Unit = {
+
+  }
 }
