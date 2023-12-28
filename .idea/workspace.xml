@@ -7,12 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="26/12/2023 9:56">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="11:15">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
@@ -24,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="18f50fb69f2d29438b7e27ca62128ba46f16972b" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "c636b7c4",
+    "git-widget-placeholder": "Fix",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -123,6 +119,7 @@
       <updated>1703413129789</updated>
       <workItem from="1703413130860" duration="14801000" />
       <workItem from="1703525231729" duration="12446000" />
+      <workItem from="1703760716267" duration="3084000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -187,11 +184,38 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Fix" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Fix" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

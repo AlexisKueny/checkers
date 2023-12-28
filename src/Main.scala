@@ -36,11 +36,8 @@ object Main extends App {
       }
 
       //gamePhase = 1
-
-      //println(caseI,caseJ,boolCheck)
-      //Color possible moves
-      colorPossibleMoves()
-      //checker.colorMovesCheckerBlack(caseI,caseJ)
+      checker.spaceOccupancy(3)(3)= 3
+      boardWithCheckers()
     }
   })
 
@@ -58,28 +55,25 @@ object Main extends App {
   }
   //Draw board with checkers
   def boardWithCheckers() : Unit ={
-    drawEmptyBoard()
+    //drawEmptyBoard()
     for (i <- 0 to 7; j <- 0 to 3){
-      if (checker.spaceOccupancy(i)(j) != 0){
+      if (checker.spaceOccupancy(i)(j) != 0) {
         if (checker.spaceOccupancy(i)(j) == 1) display.setColor(checker.colB)
         else display.setColor(checker.colW)
+        if (checker.spaceOccupancy(i)(j) == 2) display.setColor(checker.colW)
+        if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
         px = checker.spaceCenterX(i)(j)
         py = checker.spaceCenterY(i)(j)
-        println(i,j)
+//        println(i,j)
         display.drawFilledCircle(px,py,checker.diam)
+        if(checker.spaceOccupancy(i)(j) <3) display.drawFilledCircle(px,py,checker.diam)
+        else colorSpaceGreen(px,py)
       }
     }
   }
+  def colorSpaceGreen(i: Int, i1: Int): Unit = {
+    for (x <- px to (px + 100); y <- py to py + 100) display.setPixel(x,y)
+  }
 
   //...
-  def colorPossibleMoves(): Unit = {
-    println(px,py,player)
-    val check = checker.checkSpace(px, py, player)
-    val boolCheck = check._1
-    if (!boolCheck) return
-    val caseI = check._2
-    val caseJ = check._3
-    if (player == 1) checker.colorMovesCheckerBlack(caseI,caseJ)
-
-  }
 }

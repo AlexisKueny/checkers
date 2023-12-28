@@ -5,8 +5,9 @@ class Checker {
   val spaceOccupancy: Array[Array[Int]] = Array.ofDim[Int](8, 4)
   val spaceCenterX: Array[Array[Int]] = Array.ofDim[Int](8, 4)
   val spaceCenterY: Array[Array[Int]] = Array.ofDim[Int](8, 4)
-  val colB: Color = Color.RED //spaceOccupancy = 1
-  val colW: Color = new Color(192,192,192) //spaceOccupancy = 2
+  val colW: Color = Color.RED //spaceOccupancy = 1
+  val colB: Color = new Color(192,192,192) //spaceOccupancy = 2
+  val colG : Color = Color.green
 
   def checkerInit(): Unit = {
     var x: Int = 100
