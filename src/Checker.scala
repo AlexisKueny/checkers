@@ -26,6 +26,7 @@ class Checker {
       }
     }
   }
+  //Returns i and j based on px and py mouse position
   def checkSpace(px: Int,py: Int, player : Int):(Boolean,Int,Int) ={
     for (i <- 0 to 7;j <- 0 to 3){
       if ((px >= spaceCenterX(i)(j)) && (px <= spaceCenterX(i)(j) + 100)){
@@ -36,7 +37,51 @@ class Checker {
     }
     (false,0,0)
   }
-  def colorMovesCheckerBlack(i : Int, j : Int): Unit = {
-
+  def checkGreen(i: Int,j: Int,badj: Boolean,player : Int): Int = {
+    var ir = 0
+    var bip = false
+    if (i % 2 == 0) bip = true
+    if (player == 2){
+      //player black
+      if (badj){
+        //scan adjacent empty spaces
+        if (i == 0) return 0
+        if (bip){
+          //i is even
+          if (spaceOccupancy(i-1)(j) == 0){
+            ir = 10
+            spaceOccupancy(i)(j) = 3
+          }
+          if (j + 1 <= 3){
+            if (spaceOccupancy(i-1)(j+1) == 0){
+              ir += 20
+              spaceOccupancy(i-1)(j+1)= 3
+            }
+          }
+        }
+        else{
+          //i is odd
+          if (j -1 >= 0){
+            if (spaceOccupancy(i-1)(j-1) == 0){
+              ir = 11
+              spaceOccupancy(i-1)(j-1) = 3
+            }
+          }
+          if (spaceOccupancy(i-1)(j)==0){
+            ir += 21
+            spaceOccupancy(i-1)(j)=3
+          }
+        }
+        return ir
+      }
+      else{
+        //hop over a checker
+      }
+    }
+    else{
+      //player white
+    }
+    return ir
   }
+
 }

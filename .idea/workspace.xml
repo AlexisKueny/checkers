@@ -9,6 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="11:15">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
@@ -119,7 +123,7 @@
       <updated>1703413129789</updated>
       <workItem from="1703413130860" duration="14801000" />
       <workItem from="1703525231729" duration="12446000" />
-      <workItem from="1703760716267" duration="3084000" />
+      <workItem from="1703760716267" duration="5695000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -177,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703581000046</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="11:15">
+      <option name="closed" value="true" />
+      <created>1703791988186</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703791988186</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +240,8 @@
     <MESSAGE value="25/12/2023 18:22" />
     <MESSAGE value="25/12/2023 19:54" />
     <MESSAGE value="26/12/2023 9:56" />
-    <option name="LAST_COMMIT_MESSAGE" value="26/12/2023 9:56" />
+    <MESSAGE value="11:15" />
+    <option name="LAST_COMMIT_MESSAGE" value="11:15" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

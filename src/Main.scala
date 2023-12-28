@@ -14,6 +14,7 @@ object Main extends App {
   var py = 0
   var mb = 0
 
+
   //Run/////////////////////////////////////////////////
   drawEmptyBoard()
   display.addMouseListener(new MouseAdapter() {
@@ -22,9 +23,7 @@ object Main extends App {
       // Get the mouse position from the event
       px = e.getX
       py = e.getY
-      //println(s"Mouse position $px - $py")
-      // Draws a circle where the mouse was during click
-      //display.drawFilledCircle(px, py, 5)
+
 
       //gamephase = 0 until start button pressed
       if ((gamePhase == 0) && (50 to 150).contains(px) && (50 to 150).contains(py)){
@@ -34,10 +33,19 @@ object Main extends App {
         boardWithCheckers()
         player = 2
       }
-
       //gamePhase = 1
-      checker.spaceOccupancy(3)(3)= 3
-      boardWithCheckers()
+      val tuple = checker.checkSpace(px,py,player) //returns boolean,i,j
+      if (tuple._1){
+        //Test if an adjacent space is green
+        var ira = 0
+        ira = checker.checkGreen(tuple._2,tuple._3,badj = true,player)
+        //Test if hop over a checker
+        var ir1 = 0
+        //ir1 = checker.checkGreen(tuple._2,tuple._3,false,player)
+        if (ira + ir1 != 0){
+          boardWithCheckers()
+        }
+      }
     }
   })
 
@@ -74,6 +82,5 @@ object Main extends App {
   def colorSpaceGreen(i: Int, i1: Int): Unit = {
     for (x <- px to (px + 100); y <- py to py + 100) display.setPixel(x,y)
   }
-
   //...
 }
