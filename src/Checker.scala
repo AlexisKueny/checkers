@@ -1,3 +1,5 @@
+import Main.{checker, display}
+
 import java.awt.Color
 
 class Checker {
@@ -83,5 +85,15 @@ class Checker {
     }
     return ir
   }
-
+  def clearGreen() : Unit ={
+    for (i <- 0 to 7;j <- 0 to 3){
+      if (spaceOccupancy(i)(j) == 3){
+        println(i,j)
+        spaceOccupancy(i)(j) = 0
+        val xstart = checker.spaceCenterX(i)(j)
+        val ystart = checker.spaceCenterY(i)(j)
+        for (x <- xstart to (xstart + 100); y <- ystart to ystart + 100) display.setPixel(x,y,0)
+      }
+    }
+  }
 }

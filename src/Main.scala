@@ -34,13 +34,17 @@ object Main extends App {
         player = 2
       }
       //gamePhase = 1
-      val tuple = checker.checkSpace(px,py,player) //returns boolean,i,j
+      checker.clearGreen()
+      boardWithCheckers()
+      println(checker.spaceOccupancy(4)(0),checker.spaceOccupancy(4)(1))
+      var tuple = checker.checkSpace(px,py,player) //returns boolean,i,j
       if (tuple._1){
         //Test if an adjacent space is green
         var ira = 0
         ira = checker.checkGreen(tuple._2,tuple._3,badj = true,player)
         //Test if hop over a checker
         var ir1 = 0
+        println(ira,ir1)
         //ir1 = checker.checkGreen(tuple._2,tuple._3,false,player)
         if (ira + ir1 != 0){
           boardWithCheckers()
@@ -65,22 +69,26 @@ object Main extends App {
   def boardWithCheckers() : Unit ={
     //drawEmptyBoard()
     for (i <- 0 to 7; j <- 0 to 3){
+      var x = 0
+      var y = 0
       if (checker.spaceOccupancy(i)(j) != 0) {
         if (checker.spaceOccupancy(i)(j) == 1) display.setColor(checker.colB)
         else display.setColor(checker.colW)
         if (checker.spaceOccupancy(i)(j) == 2) display.setColor(checker.colW)
         if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
-        px = checker.spaceCenterX(i)(j)
-        py = checker.spaceCenterY(i)(j)
+        x = checker.spaceCenterX(i)(j)
+        y = checker.spaceCenterY(i)(j)
 //        println(i,j)
-        display.drawFilledCircle(px,py,checker.diam)
-        if(checker.spaceOccupancy(i)(j) <3) display.drawFilledCircle(px,py,checker.diam)
-        else colorSpaceGreen(px,py)
+        display.drawFilledCircle(x,y,checker.diam)
+        if(checker.spaceOccupancy(i)(j) <3) display.drawFilledCircle(x,y,checker.diam)
+        else colorSpaceGreen(i,j)
       }
     }
   }
-  def colorSpaceGreen(i: Int, i1: Int): Unit = {
-    for (x <- px to (px + 100); y <- py to py + 100) display.setPixel(x,y)
+  def colorSpaceGreen(i: Int, j: Int): Unit = {
+    val xstart = checker.spaceCenterX(i)(j)
+    val ystart = checker.spaceCenterY(i)(j)
+    for (x <- xstart to (xstart + 100); y <- ystart to ystart + 100) display.setPixel(x,y)
   }
   //...
 }
