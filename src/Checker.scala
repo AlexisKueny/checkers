@@ -34,10 +34,11 @@ class Checker {
       if ((px >= spaceCenterX(i)(j)) && (px <= spaceCenterX(i)(j) + 100)){
         if ((py >= spaceCenterY(i)(j)) && (py <= spaceCenterY(i)(j) + 100)){
           if (spaceOccupancy(i)(j) == player) return (true,i,j)
+          else return  (false,i,j)
         }
       }
     }
-    (false,0,0)
+    return (false,-1,-1)
   }
   def checkGreen(i: Int,j: Int,badj: Boolean,player : Int): Int = {
     var ir = 0
