@@ -65,8 +65,6 @@ object Main extends App {
           checker.clearGreen()
           checker.spaceOccupancy(i)(j) = player
           checker.spaceOccupancy(currentI)(currentJ) = 0
-          println(checker.spaceOccupancy(currentI)(currentJ), currentI, currentJ)
-          println(checker.spaceOccupancy(i)(j), i, j, player)
           boardWithCheckers()
           if (player == 1){
             player = 2

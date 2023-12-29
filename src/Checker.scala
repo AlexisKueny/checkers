@@ -53,12 +53,13 @@ class Checker {
           //i is even
           if (spaceOccupancy(i-1)(j) == 0){
             ir = 10
-            spaceOccupancy(i)(j) = 3
+            spaceOccupancy(i-1)(j) = 3
           }
           if (j + 1 <= 3){
             if (spaceOccupancy(i-1)(j+1) == 0){
               ir += 20
               spaceOccupancy(i-1)(j+1)= 3
+              println("bug?",spaceOccupancy(i)(j),i,j)
             }
           }
         }
@@ -123,7 +124,6 @@ class Checker {
   def clearGreen() : Unit ={
     for (i <- 0 to 7;j <- 0 to 3){
       if (spaceOccupancy(i)(j) == 3){
-        println(i,j)
         spaceOccupancy(i)(j) = 0
         val xstart = checker.spaceCenterX(i)(j)
         val ystart = checker.spaceCenterY(i)(j)
