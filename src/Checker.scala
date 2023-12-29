@@ -83,6 +83,40 @@ class Checker {
     }
     else{
       //player white
+      if (badj){
+        //test if neighbouring spaces are green
+        if (i == 7) return 0
+        else{
+          if (bip){
+            //case i is even
+            if (spaceOccupancy(i+1)(j)==0){
+              ir = 10
+              spaceOccupancy(i + 1)(j) = 3
+            }
+            if (j + 1 < 4){
+              if (spaceOccupancy(i+1)(j+1) == 0){
+                ir += 20
+                spaceOccupancy(i+1)(j+1) = 3
+              }
+            }
+          }
+          else{
+            //case i is odd
+            if (j - 1 >= 0){
+              if (spaceOccupancy(i+1)(j-1) == 0){
+                ir = 11
+                spaceOccupancy(i+1)(j-1) = 3
+              }
+            }
+            if (spaceOccupancy(i+1)(j)==0){
+              ir += 21
+              spaceOccupancy(i+1)(j)=3
+            }
+          }
+          return ir
+        }
+      }
+      //not adjacent
     }
     return ir
   }

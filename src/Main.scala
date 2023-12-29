@@ -36,6 +36,7 @@ object Main extends App {
         checker.checkerInit()
         boardWithCheckers()
         player = 2
+        switchplayer()
       }
       //gamePhase = 1
       if (mb == 1) {
@@ -67,8 +68,14 @@ object Main extends App {
           println(checker.spaceOccupancy(currentI)(currentJ), currentI, currentJ)
           println(checker.spaceOccupancy(i)(j), i, j, player)
           boardWithCheckers()
-          if (player == 1) player = 2
-          else player = 1
+          if (player == 1){
+            player = 2
+            switchplayer()
+          }
+          else{
+            player = 1
+            switchplayer()
+          }
         }
       }
     }
@@ -113,11 +120,18 @@ object Main extends App {
       }
     }
   }
-
   def colorSpaceGreen(i: Int, j: Int): Unit = {
     val xstart = checker.spaceCenterX(i)(j)
     val ystart = checker.spaceCenterY(i)(j)
     for (x <- xstart to (xstart + 100); y <- ystart to ystart + 100) display.setPixel(x, y)
+  }
+  //Player change
+  def switchplayer() : Unit = {
+    for (x <- 50 to 200; y <- 150 to 250) display.setPixel(x, y, new Color(150, 121, 105))
+    display.drawFancyString(10, 200,"Player", Color.black, 40)
+    if (player == 2) display.setColor(checker.colW)
+    else display.setColor(checker.colB)
+    display.drawFilledCircle(155,170,30)
   }
   //...
 }

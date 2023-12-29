@@ -7,8 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="green spaces working">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="movement implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
@@ -24,6 +28,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -121,7 +128,9 @@
       <workItem from="1703525231729" duration="12446000" />
       <workItem from="1703760716267" duration="7712000" />
       <workItem from="1703796686261" duration="248000" />
-      <workItem from="1703847320668" duration="2678000" />
+      <workItem from="1703847320668" duration="3006000" />
+      <workItem from="1703850690504" duration="17000" />
+      <workItem from="1703870079551" duration="1827000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -203,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703796468139</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="movement implemented">
+      <option name="closed" value="true" />
+      <created>1703850084399</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703850084399</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +273,8 @@
     <MESSAGE value="26/12/2023 9:56" />
     <MESSAGE value="11:15" />
     <MESSAGE value="green spaces working" />
-    <option name="LAST_COMMIT_MESSAGE" value="green spaces working" />
+    <MESSAGE value="movement implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="movement implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
