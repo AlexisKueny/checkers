@@ -106,8 +106,9 @@ object Main extends App {
           }
         }
         println("Bonjour",currentI,currentJ)
-
-        checker.hopLeftClick(player, currentI, currentJ)
+        if (checker.hopLeftClick(player, currentI, currentJ) == 0){
+          bSwitch = true
+        }
         boardWithCheckers()
         if (bSwitch) {
           //Switch player
