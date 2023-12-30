@@ -7,8 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="red player hop over implemented">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="README edited">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +27,20 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AlexisKueny"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="123028c5-956b-4e41-8d34-7f68b321eb55" />
+        <option name="url" value="https://github.com/AlexisKueny/checkers.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -126,7 +145,7 @@
       <workItem from="1703850690504" duration="17000" />
       <workItem from="1703870079551" duration="3610000" />
       <workItem from="1703945567127" duration="2517000" />
-      <workItem from="1703954937871" duration="3581000" />
+      <workItem from="1703954937871" duration="5854000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -240,7 +259,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703957962411</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="white player hop even">
+      <option name="closed" value="true" />
+      <created>1703958538631</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1703958538631</updated>
+    </task>
+    <task id="LOCAL-00016" summary="README edited">
+      <option name="closed" value="true" />
+      <created>1703958687558</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1703958687558</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +332,9 @@
     <MESSAGE value="white movement implemented" />
     <MESSAGE value="disappearing checker bug fixed" />
     <MESSAGE value="red player hop over implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="red player hop over implemented" />
+    <MESSAGE value="white player hop even" />
+    <MESSAGE value="README edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="README edited" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

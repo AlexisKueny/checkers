@@ -1,5 +1,4 @@
 import Main.{checker, display}
-
 import java.awt.Color
 
 class Checker {
@@ -44,7 +43,7 @@ class Checker {
 
   def checkGreen(i: Int, j: Int, badj: Boolean, player: Int): Int = {
     var adversePlayer = 2
-    if (player ==2) adversePlayer = 1
+    if (player == 2) adversePlayer = 1
     var ir = 0
     var bip = false
     if (i % 2 == 0) bip = true
@@ -84,7 +83,7 @@ class Checker {
       }
       else {
         //hop over a checker
-        println("Bonjour",i,j)
+        println("Bonjour", i, j)
         if (i <= 1) return 0
         if (bip) {
           //i is even
@@ -108,17 +107,17 @@ class Checker {
           //i is odd
           if (j - 1 >= 0) {
             println("Bonjour titi")
-            if (spaceOccupancy(i-1)(j-1) == adversePlayer){
-              if (spaceOccupancy(i-2)(j-1) == 0){
+            if (spaceOccupancy(i - 1)(j - 1) == adversePlayer) {
+              if (spaceOccupancy(i - 2)(j - 1) == 0) {
                 ir = 41
-                spaceOccupancy(i-2)(j-1)=3
+                spaceOccupancy(i - 2)(j - 1) = 3
               }
             }
           }
-          if (j < 3){
-            if (spaceOccupancy(i-1)(j) == adversePlayer){
-              if (spaceOccupancy(i-2)(j+1)==0){
-                spaceOccupancy(i-2)(j+1)=3
+          if (j < 3) {
+            if (spaceOccupancy(i - 1)(j) == adversePlayer) {
+              if (spaceOccupancy(i - 2)(j + 1) == 0) {
+                spaceOccupancy(i - 2)(j + 1) = 3
                 if (ir == 41) ir = 51
                 else ir = 43
               }
@@ -164,28 +163,45 @@ class Checker {
       }
       //not adjacent
       if (i >= 6) return 0
-      if (bip){
+      if (bip) {
         //i is even
-        if (j >= 1){
-          if (spaceOccupancy(i+1)(j) == adversePlayer){
-            if (spaceOccupancy(i+2)(j-1) == 0){
+        if (j >= 1) {
+          if (spaceOccupancy(i + 1)(j) == adversePlayer) {
+            if (spaceOccupancy(i + 2)(j - 1) == 0) {
               ir = 40
-              spaceOccupancy(i+2)(j-1) = 3
+              spaceOccupancy(i + 2)(j - 1) = 3
             }
           }
         }
-        if (j != 3){
-          if (spaceOccupancy(i+1)(j) == adversePlayer){
-            if (spaceOccupancy(i+2)(j+1) == 0){
+        if (j != 3) {
+          if (spaceOccupancy(i + 1)(j+1) == adversePlayer) {
+            if (spaceOccupancy(i + 2)(j + 1) == 0) {
               if (ir == 40) ir = 50
               else ir = 42
-              spaceOccupancy(i+2)(j+1)=3
+              spaceOccupancy(i + 2)(j + 1) = 3
             }
           }
         }
       }
-      else{
+      else {
         //i is odd
+        if (j != 3) {
+          if (spaceOccupancy(i + 1)(j) == adversePlayer) {
+            if (spaceOccupancy(i + 2)(j + 1) == 0) {
+              ir = 41
+              spaceOccupancy(i + 2)(j + 1) = 3
+            }
+          }
+        }
+        if (j - 1 >= 0) {
+          if (spaceOccupancy(i + 1)(j-1) == adversePlayer) {
+            if (spaceOccupancy(i + 2)(j-1) == 0) {
+              spaceOccupancy(i + 2)(j-1) = 3
+              if (ir == 41) ir = 51
+              else ir = 43
+            }
+          }
+        }
       }
     }
     ir
@@ -206,15 +222,29 @@ class Checker {
     for (i <- 0 to 7; j <- 0 to 3) {
       if (spaceOccupancy(i)(j) != 3) spaceOccupancy(i)(j) = 0
     }
-    spaceOccupancy(7)(2) = 2
-    spaceOccupancy(7)(1) = 2
-    spaceOccupancy(6)(1) = 1
-    spaceOccupancy(6)(2) = 1
-    spaceOccupancy(4)(0) = 1
-    spaceOccupancy(4)(1) = 1
-    spaceOccupancy(4)(2) = 1
-    spaceOccupancy(2)(0) = 1
-    spaceOccupancy(2)(1) = 1
-    spaceOccupancy(2)(2) = 1
+    //    spaceOccupancy(7)(2) = 2
+    //    spaceOccupancy(7)(1) = 2
+    //    spaceOccupancy(6)(1) = 1
+    //    spaceOccupancy(6)(2) = 1
+    //    spaceOccupancy(4)(0) = 1
+    //    spaceOccupancy(4)(1) = 1
+    //    spaceOccupancy(4)(2) = 1
+    //    spaceOccupancy(2)(0) = 1
+    //    spaceOccupancy(2)(1) = 1
+    //    spaceOccupancy(2)(2) = 1
+    spaceOccupancy(0)(3) = 1
+    spaceOccupancy(0)(2) = 1
+    spaceOccupancy(0)(1) = 1
+    spaceOccupancy(0)(0) = 1
+    spaceOccupancy(1)(1) = 2
+    spaceOccupancy(1)(2) = 2
+    spaceOccupancy(3)(1) = 2
+    spaceOccupancy(3)(2) = 2
+    spaceOccupancy(3)(3) = 2
+    spaceOccupancy(3)(0) = 2
+    spaceOccupancy(5)(1) = 2
+    spaceOccupancy(5)(2) = 2
+    spaceOccupancy(5)(3) = 2
+    spaceOccupancy(5)(0) = 2
   }
 }

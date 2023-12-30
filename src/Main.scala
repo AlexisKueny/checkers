@@ -33,7 +33,7 @@ object Main extends App {
         //checker initialization
         checker.checkerInit()
         boardWithCheckers()
-        checker.checkerTest() //to delete
+//        checker.checkerTest() //to delete
         player = 2
         switchplayer()
       }
