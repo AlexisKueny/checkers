@@ -39,7 +39,7 @@ class Checker {
         }
       }
     }
-    return (false, -1, -1)
+    (false, -1, -1)
   }
 
   def checkGreen(i: Int, j: Int, badj: Boolean, player: Int): Int = {
@@ -163,8 +163,32 @@ class Checker {
         }
       }
       //not adjacent
+      if (i >= 6) return 0
+      if (bip){
+        //i is even
+        if (j >= 1){
+          if (spaceOccupancy(i+1)(j) == adversePlayer){
+            if (spaceOccupancy(i+2)(j-1) == 0){
+              ir = 40
+              spaceOccupancy(i+2)(j-1) = 3
+            }
+          }
+        }
+        if (j != 3){
+          if (spaceOccupancy(i+1)(j) == adversePlayer){
+            if (spaceOccupancy(i+2)(j+1) == 0){
+              if (ir == 40) ir = 50
+              else ir = 42
+              spaceOccupancy(i+2)(j+1)=3
+            }
+          }
+        }
+      }
+      else{
+        //i is odd
+      }
     }
-    return ir
+    ir
   }
 
   def clearGreen(): Unit = {
