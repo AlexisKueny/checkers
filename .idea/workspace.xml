@@ -7,13 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="white movement implemented">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="disappearing checker bug fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$delayedInit$body.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$delayedInit$body.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Mouse$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Mouse$delayedInit$body.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Mouse.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mouse.scala" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +134,9 @@
       <workItem from="1703796686261" duration="248000" />
       <workItem from="1703847320668" duration="3006000" />
       <workItem from="1703850690504" duration="17000" />
-      <workItem from="1703870079551" duration="2812000" />
+      <workItem from="1703870079551" duration="3610000" />
+      <workItem from="1703945567127" duration="2517000" />
+      <workItem from="1703954937871" duration="3000000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -227,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703872029031</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="disappearing checker bug fixed">
+      <option name="closed" value="true" />
+      <created>1703873174415</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703873174415</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +297,8 @@
     <MESSAGE value="green spaces working" />
     <MESSAGE value="movement implemented" />
     <MESSAGE value="white movement implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="white movement implemented" />
+    <MESSAGE value="disappearing checker bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="disappearing checker bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

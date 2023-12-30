@@ -1,12 +1,10 @@
-import Mouse.fg
 import hevs.graphics.FunGraphics
-
 import java.awt.Color
 import java.awt.event.{MouseAdapter, MouseEvent}
 
 object Main extends App {
   //Declarations/////////////////////////////////////////
-  val display: FunGraphics = new FunGraphics(1200, 800)
+  val display: FunGraphics = new FunGraphics(1201, 801)
   var gamePhase: Int = 0
   val checker: Checker = new Checker
   var player: Int = 0
@@ -35,16 +33,18 @@ object Main extends App {
         //checker initialization
         checker.checkerInit()
         boardWithCheckers()
+        checker.checkerTest() //to delete
         player = 2
         switchplayer()
       }
       //gamePhase = 1
+      //println(checker.spaceOccupancy(7)(1),checker.spaceOccupancy(6)(0),checker.spaceOccupancy(6)(1))
       if (mb == 1) {
         currentI = i
         currentJ = j
         checker.clearGreen()
         boardWithCheckers()
-        println(checker.spaceOccupancy(4)(0), checker.spaceOccupancy(4)(1))
+        //println(checker.spaceOccupancy(4)(0), checker.spaceOccupancy(4)(1))
         //var tuple = checker.checkSpace(px,py,player)
         if (tuple._1) {
           //Test if an adjacent space is green
@@ -52,19 +52,21 @@ object Main extends App {
           ira = checker.checkGreen(i, j, badj = true, player)
           //Test if hop over a checker
           var ir1 = 0
-          println(ira, ir1)
-          //ir1 = checker.checkGreen(tuple._2,tuple._3,false,player)
-          if (ira + ir1 != 0) {
+          ir1 = checker.checkGreen(i,j,badj = false,player)
+          println("toto",ira,ir1)
+//          if (ira + ir1 != 0) {
             boardWithCheckers()
-          }
+//          }
         }
       }
+      //mouse right click
       if (mb == 3) {
-        //println(i,j,checker.spaceOccupancy(i)(j),tuple._1)
+        println("C",i,j,checker.spaceOccupancy(i)(j),currentI,currentJ)
         if (checker.spaceOccupancy(i)(j) == 3) {
           checker.clearGreen()
           checker.spaceOccupancy(i)(j) = player
           checker.spaceOccupancy(currentI)(currentJ) = 0
+          println("B",checker.spaceOccupancy(currentI)(currentJ),currentI,currentJ,i,j)
           boardWithCheckers()
           if (player == 1){
             player = 2
