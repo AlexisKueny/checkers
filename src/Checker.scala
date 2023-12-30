@@ -62,7 +62,6 @@ class Checker {
             if (spaceOccupancy(i - 1)(j + 1) == 0) {
               ir += 20
               spaceOccupancy(i - 1)(j + 1) = 3
-              println("bug?", spaceOccupancy(i)(j), i, j)
             }
           }
         }
@@ -83,7 +82,6 @@ class Checker {
       }
       else {
         //hop over a checker
-        println("Bonjour", i, j)
         if (i <= 1) return 0
         if (bip) {
           //i is even
@@ -106,7 +104,6 @@ class Checker {
         else {
           //i is odd
           if (j - 1 >= 0) {
-            println("Bonjour titi")
             if (spaceOccupancy(i - 1)(j - 1) == adversePlayer) {
               if (spaceOccupancy(i - 2)(j - 1) == 0) {
                 ir = 41
@@ -174,7 +171,7 @@ class Checker {
           }
         }
         if (j != 3) {
-          if (spaceOccupancy(i + 1)(j+1) == adversePlayer) {
+          if (spaceOccupancy(i + 1)(j + 1) == adversePlayer) {
             if (spaceOccupancy(i + 2)(j + 1) == 0) {
               if (ir == 40) ir = 50
               else ir = 42
@@ -194,9 +191,9 @@ class Checker {
           }
         }
         if (j - 1 >= 0) {
-          if (spaceOccupancy(i + 1)(j-1) == adversePlayer) {
-            if (spaceOccupancy(i + 2)(j-1) == 0) {
-              spaceOccupancy(i + 2)(j-1) = 3
+          if (spaceOccupancy(i + 1)(j - 1) == adversePlayer) {
+            if (spaceOccupancy(i + 2)(j - 1) == 0) {
+              spaceOccupancy(i + 2)(j - 1) = 3
               if (ir == 41) ir = 51
               else ir = 43
             }
@@ -218,33 +215,58 @@ class Checker {
     }
   }
 
+  //Multiple hops
+  def hopLeftClick(player: Int, iStart: Int, jStart: Int): Int = {
+    var iRet: Int = 0
+    var ir: Int = 0
+    iRet = checkGreen(iStart, jStart, badj = false, player)
+    if (iRet == 0) return iRet
+    if (player == 2) { //red?
+      for (is <- iStart - 2 to 2 by -2) {
+        iRet = 0
+        for (js <- 0 to 3) {
+          if (spaceOccupancy(is)(js) == 3) {
+            ir = checkGreen(is, js, badj = false, player)
+            iRet += ir
+          }
+        }
+        if (iRet == 0) return 1
+      }
+      1
+    }
+    else {
+      //player 1
+      1
+    }
+  }
+
   def checkerTest(): Unit = {
     for (i <- 0 to 7; j <- 0 to 3) {
       if (spaceOccupancy(i)(j) != 3) spaceOccupancy(i)(j) = 0
     }
-    //    spaceOccupancy(7)(2) = 2
-    //    spaceOccupancy(7)(1) = 2
-    //    spaceOccupancy(6)(1) = 1
-    //    spaceOccupancy(6)(2) = 1
-    //    spaceOccupancy(4)(0) = 1
-    //    spaceOccupancy(4)(1) = 1
-    //    spaceOccupancy(4)(2) = 1
-    //    spaceOccupancy(2)(0) = 1
-    //    spaceOccupancy(2)(1) = 1
-    //    spaceOccupancy(2)(2) = 1
-    spaceOccupancy(0)(3) = 1
-    spaceOccupancy(0)(2) = 1
-    spaceOccupancy(0)(1) = 1
-    spaceOccupancy(0)(0) = 1
-    spaceOccupancy(1)(1) = 2
-    spaceOccupancy(1)(2) = 2
-    spaceOccupancy(3)(1) = 2
-    spaceOccupancy(3)(2) = 2
-    spaceOccupancy(3)(3) = 2
-    spaceOccupancy(3)(0) = 2
-    spaceOccupancy(5)(1) = 2
-    spaceOccupancy(5)(2) = 2
-    spaceOccupancy(5)(3) = 2
-    spaceOccupancy(5)(0) = 2
+    spaceOccupancy(7)(2) = 2
+    spaceOccupancy(7)(1) = 2
+    spaceOccupancy(6)(1) = 1
+    spaceOccupancy(6)(2) = 1
+    spaceOccupancy(4)(0) = 1
+    spaceOccupancy(4)(1) = 1
+    spaceOccupancy(4)(2) = 1
+    spaceOccupancy(2)(0) = 1
+    spaceOccupancy(2)(1) = 1
+    spaceOccupancy(2)(2) = 1
+    //    spaceOccupancy(0)(3) = 1
+    //    spaceOccupancy(0)(2) = 1
+    //    spaceOccupancy(0)(1) = 1
+    //    spaceOccupancy(0)(0) = 1
+    //    spaceOccupancy(1)(1) = 2
+    //    spaceOccupancy(1)(2) = 2
+    //    spaceOccupancy(3)(1) = 2
+    //    spaceOccupancy(3)(2) = 2
+    //    spaceOccupancy(3)(3) = 2
+    //    spaceOccupancy(3)(0) = 2
+    //    spaceOccupancy(5)(1) = 2
+    //    spaceOccupancy(5)(2) = 2
+    //    spaceOccupancy(5)(3) = 2
+    //    spaceOccupancy(5)(0) = 2
   }
 }

@@ -33,7 +33,7 @@ object Main extends App {
         //checker initialization
         checker.checkerInit()
         boardWithCheckers()
-//        checker.checkerTest() //to delete
+        checker.checkerTest() //to delete
         player = 2
         switchplayer()
       }
@@ -52,27 +52,70 @@ object Main extends App {
           ira = checker.checkGreen(i, j, badj = true, player)
           //Test if hop over a checker
           var ir1 = 0
-          ir1 = checker.checkGreen(i,j,badj = false,player)
-          println("toto",ira,ir1)
-//          if (ira + ir1 != 0) {
-            boardWithCheckers()
-//          }
+          //          ir1 = checker.checkGreen(i,j,badj = false,player)
+          //          println("toto",ira,ir1)
+          //          if (ira + ir1 != 0) {
+          checker.hopLeftClick(player, currentI, currentJ)
+          boardWithCheckers()
+          //          }
         }
       }
       //mouse right click
       if (mb == 3) {
-        println("C",i,j,checker.spaceOccupancy(i)(j),currentI,currentJ)
-        if (checker.spaceOccupancy(i)(j) == 3) {
-          checker.clearGreen()
-          checker.spaceOccupancy(i)(j) = player
-          checker.spaceOccupancy(currentI)(currentJ) = 0
-          println("B",checker.spaceOccupancy(currentI)(currentJ),currentI,currentJ,i,j)
-          boardWithCheckers()
-          if (player == 1){
+        var iHop: Int = 2
+        var iHopS2: Int = 1
+        if (player == 2){
+          iHop = -2
+          iHopS2 = -1
+        }
+        println("Bonjour" + player)
+        var bSwitch: Boolean = true
+        println("Bonjour", currentI, currentJ, i, j)
+        if (((player == 2) && (i + 1 == currentI)) || ((player == 1) && (i - 1 == currentI))) {
+          //Only for adjacent movement
+          //if ((currentI + iHop / 2 - i) == 0) {
+          println("B", currentI, currentJ, iHop, iHop / 2)
+          if (checker.spaceOccupancy(i)(j) == 3) {
+            checker.clearGreen()
+            checker.spaceOccupancy(i)(j) = player
+            checker.spaceOccupancy(currentI)(currentJ) = 0
+            //}
+          }
+        }
+        else {
+          //Movement with hops
+          bSwitch = false
+          println("A", i, j, iHop, currentI, currentJ)
+          if (i == currentI + iHop) {
+            if (checker.spaceOccupancy(i)(j) == 3) {
+              if (j > currentJ) {
+                println("Bug")
+                if (currentI % 2 == 0) checker.spaceOccupancy(currentI+iHopS2)(j) = 0
+                else checker.spaceOccupancy(currentI+iHopS2)(currentJ) = 0 //opposing checker
+              }
+              else {
+                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2)(currentJ) = 0
+                else checker.spaceOccupancy(currentI + iHopS2)(j) = 0 //opposing checker
+              }
+            }
+            checker.clearGreen()
+            checker.spaceOccupancy(currentI)(currentJ) = 0
+            currentI = i
+            currentJ = j
+            checker.spaceOccupancy(currentI)(currentJ) = player
+          }
+        }
+        println("Bonjour",currentI,currentJ)
+
+        checker.hopLeftClick(player, currentI, currentJ)
+        boardWithCheckers()
+        if (bSwitch) {
+          //Switch player
+          if (player == 1) {
             player = 2
             switchplayer()
           }
-          else{
+          else {
             player = 1
             switchplayer()
           }
@@ -112,7 +155,7 @@ object Main extends App {
         if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
         else colorSpaceGreen(i, j)
       }
-      else{
+      else {
         display.setColor(Color.BLACK)
         val xstart = checker.spaceCenterX(i)(j)
         val ystart = checker.spaceCenterY(i)(j)
@@ -120,18 +163,21 @@ object Main extends App {
       }
     }
   }
+
   def colorSpaceGreen(i: Int, j: Int): Unit = {
     val xstart = checker.spaceCenterX(i)(j)
     val ystart = checker.spaceCenterY(i)(j)
     for (x <- xstart to (xstart + 100); y <- ystart to ystart + 100) display.setPixel(x, y)
   }
+
   //Player change
-  def switchplayer() : Unit = {
+  def switchplayer(): Unit = {
     for (x <- 50 to 200; y <- 150 to 250) display.setPixel(x, y, new Color(150, 121, 105))
-    display.drawFancyString(10, 200,"Player", Color.black, 40)
+    display.drawFancyString(10, 200, "Player", Color.black, 40)
     if (player == 2) display.setColor(checker.colW)
     else display.setColor(checker.colB)
-    display.drawFilledCircle(155,170,30)
+    display.drawFilledCircle(155, 170, 30)
   }
+
   //...
 }
