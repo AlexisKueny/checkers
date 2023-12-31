@@ -7,11 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="White hop over implemented">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Kingless gameplay">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
@@ -28,12 +25,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AlexisKueny"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AlexisKueny&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -145,7 +142,8 @@
       <workItem from="1703850690504" duration="17000" />
       <workItem from="1703870079551" duration="3610000" />
       <workItem from="1703945567127" duration="2517000" />
-      <workItem from="1703954937871" duration="13004000" />
+      <workItem from="1703954937871" duration="13256000" />
+      <workItem from="1704010804976" duration="1376000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -283,7 +281,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703961077036</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Capture mechanic red">
+      <option name="closed" value="true" />
+      <created>1703970236842</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1703970236842</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Kingless gameplay">
+      <option name="closed" value="true" />
+      <created>1703970433587</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1703970433587</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +357,9 @@
     <MESSAGE value="white player hop even" />
     <MESSAGE value="README edited" />
     <MESSAGE value="White hop over implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="White hop over implemented" />
+    <MESSAGE value="Capture mechanic red" />
+    <MESSAGE value="Kingless gameplay" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kingless gameplay" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

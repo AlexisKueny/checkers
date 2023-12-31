@@ -105,7 +105,8 @@ object Main extends App {
             checker.spaceOccupancy(currentI)(currentJ) = player
           }
         }
-        println("Bonjour",currentI,currentJ)
+        if ((player == 1) && (i == 7)) checker.kingPiece(i,j,player)
+        if ((player == 2) && (i == 0)) checker.kingPiece(i,j,player)
         if (checker.hopLeftClick(player, currentI, currentJ) == 0){
           bSwitch = true
         }
@@ -145,15 +146,16 @@ object Main extends App {
       var x = 0
       var y = 0
       if (checker.spaceOccupancy(i)(j) != 0) {
-        if (checker.spaceOccupancy(i)(j) == 1) display.setColor(checker.colB)
+        if ((checker.spaceOccupancy(i)(j) == 1) || (checker.spaceOccupancy(i)(j) == -1)) display.setColor(checker.colB)
         else display.setColor(checker.colW)
-        if (checker.spaceOccupancy(i)(j) == 2) display.setColor(checker.colW)
+        if ((checker.spaceOccupancy(i)(j) == 2) || (checker.spaceOccupancy(i)(j) == -2)) display.setColor(checker.colW)
         if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
         x = checker.spaceCenterX(i)(j)
         y = checker.spaceCenterY(i)(j)
         //        println(i,j)
         display.drawFilledCircle(x, y, checker.diam)
         if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
+        if (checker.spaceOccupancy(i)(j) < 0) display.drawFancyString(checker.spaceCenterX(i)(j) + 15,checker.spaceCenterY(i)(j) + 80,"K",Color.black,80)
         else colorSpaceGreen(i, j)
       }
       else {

@@ -239,6 +239,10 @@ class Checker {
       1
     }
   }
+  def kingPiece (i: Int,j: Int,player: Int): Unit = {
+    if (player == 2) spaceOccupancy(i)(j) = -2
+    else spaceOccupancy(i)(j) = -1
+  }
 
   def checkerTest(): Unit = {
     for (i <- 0 to 7; j <- 0 to 3) {
