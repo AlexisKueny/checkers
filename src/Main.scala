@@ -8,7 +8,7 @@ object Main extends App {
   var gamePhase: Int = 0
   val checker: Checker = new Checker
   var player: Int = 0
-  var adversePlayer : Int = 0
+  var adversePlayer: Int = 0
   var px = 0
   var py = 0
   var mb = 0
@@ -73,15 +73,24 @@ object Main extends App {
           iHopS2 = -1
         }
         var bSwitch: Boolean = true
-
-        if (((player == 2) && (i + 1 == currentI)) || ((player == 1) && (i - 1 == currentI))) {
+        var booleanSwitch: Boolean = false
+        if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
+          if ((i + 1 == currentI) || (i - 1 == currentI)) booleanSwitch = true
+        }
+        else {
+          if (((player == 2) && (i + 1 == currentI)) || ((player == 1) && (i - 1 == currentI))) booleanSwitch = true
+        }
+        if (booleanSwitch) {
           //Only for adjacent movement
+          println("bug?asdsad",i,j,checker.spaceOccupancy(i)(j))
           if (checker.spaceOccupancy(i)(j) == 3) {
             checker.clearGreen()
+            println("bug?")
             if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
             else checker.spaceOccupancy(i)(j) = player
             checker.spaceOccupancy(currentI)(currentJ) = 0
           }
+          bSwitch = true
         }
         else {
           //Movement with hops
@@ -98,19 +107,21 @@ object Main extends App {
               }
             }
             checker.clearGreen()
-            if (checker.spaceOccupancy(currentI)(currentJ) < 0)checker.spaceOccupancy(i)(j) = -player
+            if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
             else checker.spaceOccupancy(i)(j) = player
             checker.spaceOccupancy(currentI)(currentJ) = 0
             currentI = i
             currentJ = j
-
+            if (checker.hopLeftClick(player, currentI, currentJ) == 0) {
+                        bSwitch = true
+                      }
           }
         }
         if ((player == 1) && (i == 7)) checker.kingPiece(i, j, player)
         if ((player == 2) && (i == 0)) checker.kingPiece(i, j, player)
-        if (checker.hopLeftClick(player, currentI, currentJ) == 0) {
-          bSwitch = true
-        }
+//        if (checker.hopLeftClick(player, currentI, currentJ) == 0) {
+//          bSwitch = true
+//        }
         boardWithCheckers()
         if (bSwitch) {
           //Switch player
@@ -155,7 +166,6 @@ object Main extends App {
         if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
         x = checker.spaceCenterX(i)(j)
         y = checker.spaceCenterY(i)(j)
-        println("bug", i, j, x, y)
         display.drawFilledCircle(x, y, checker.diam)
         if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
         else colorSpaceGreen(i, j)
