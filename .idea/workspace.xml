@@ -8,7 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="King piece implemented">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="18f50fb69f2d29438b7e27ca62128ba46f16972b" />
+        <entry key="$PROJECT_DIR$" value="fb0c8e70aabd1d56576ae8bcf79d66431a230619" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,7 +118,7 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Mouse" />
         <item itemvalue="Application.fungraphicsTest" />
-        <item itemvalue="Application.fungraphicsTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Mouse" />
       </list>
     </recent_temporary>

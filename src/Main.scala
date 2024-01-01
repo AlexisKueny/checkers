@@ -8,6 +8,7 @@ object Main extends App {
   var gamePhase: Int = 0
   val checker: Checker = new Checker
   var player: Int = 0
+  var adversePlayer : Int = 0
   var px = 0
   var py = 0
   var mb = 0
@@ -22,9 +23,9 @@ object Main extends App {
       // Get the mouse position from the event
       px = e.getX
       py = e.getY
-      var tuple = checker.checkSpace(px, py, player) //returns boolean,i,j
-      var i = tuple._2
-      var j = tuple._3
+      val tuple = checker.checkSpace(px, py, player) //returns boolean,i,j
+      val i = tuple._2
+      val j = tuple._3
 
 
       //gamephase = 0 until start button pressed
@@ -35,10 +36,12 @@ object Main extends App {
         boardWithCheckers()
         checker.checkerTest() //to delete
         player = 2
+        adversePlayer = 1
         switchplayer()
       }
       //gamePhase = 1
-      //println(checker.spaceOccupancy(7)(1),checker.spaceOccupancy(6)(0),checker.spaceOccupancy(6)(1))
+
+      //Left click
       if (mb == 1) {
         currentI = i
         currentJ = j
@@ -50,6 +53,7 @@ object Main extends App {
           //Test if an adjacent space is green
           var ira = 0
           ira = checker.checkGreen(i, j, badj = true, player)
+          if (checker.spaceOccupancy(i)(j) < 0) checker.checkGreen(i, j, badj = true, adversePlayer)
           //Test if hop over a checker
           var ir1 = 0
           //          ir1 = checker.checkGreen(i,j,badj = false,player)
@@ -64,34 +68,29 @@ object Main extends App {
       if (mb == 3) {
         var iHop: Int = 2
         var iHopS2: Int = 1
-        if (player == 2){
+        if (player == 2) {
           iHop = -2
           iHopS2 = -1
         }
-        println("Bonjour" + player)
         var bSwitch: Boolean = true
-        println("Bonjour", currentI, currentJ, i, j)
+
         if (((player == 2) && (i + 1 == currentI)) || ((player == 1) && (i - 1 == currentI))) {
           //Only for adjacent movement
-          //if ((currentI + iHop / 2 - i) == 0) {
-          println("B", currentI, currentJ, iHop, iHop / 2)
           if (checker.spaceOccupancy(i)(j) == 3) {
             checker.clearGreen()
-            checker.spaceOccupancy(i)(j) = player
+            if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
+            else checker.spaceOccupancy(i)(j) = player
             checker.spaceOccupancy(currentI)(currentJ) = 0
-            //}
           }
         }
         else {
           //Movement with hops
           bSwitch = false
-          println("A", i, j, iHop, currentI, currentJ)
           if (i == currentI + iHop) {
             if (checker.spaceOccupancy(i)(j) == 3) {
               if (j > currentJ) {
-                println("Bug")
-                if (currentI % 2 == 0) checker.spaceOccupancy(currentI+iHopS2)(j) = 0
-                else checker.spaceOccupancy(currentI+iHopS2)(currentJ) = 0 //opposing checker
+                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2)(j) = 0
+                else checker.spaceOccupancy(currentI + iHopS2)(currentJ) = 0 //opposing checker
               }
               else {
                 if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2)(currentJ) = 0
@@ -99,15 +98,17 @@ object Main extends App {
               }
             }
             checker.clearGreen()
+            if (checker.spaceOccupancy(currentI)(currentJ) < 0)checker.spaceOccupancy(i)(j) = -player
+            else checker.spaceOccupancy(i)(j) = player
             checker.spaceOccupancy(currentI)(currentJ) = 0
             currentI = i
             currentJ = j
-            checker.spaceOccupancy(currentI)(currentJ) = player
+
           }
         }
-        if ((player == 1) && (i == 7)) checker.kingPiece(i,j,player)
-        if ((player == 2) && (i == 0)) checker.kingPiece(i,j,player)
-        if (checker.hopLeftClick(player, currentI, currentJ) == 0){
+        if ((player == 1) && (i == 7)) checker.kingPiece(i, j, player)
+        if ((player == 2) && (i == 0)) checker.kingPiece(i, j, player)
+        if (checker.hopLeftClick(player, currentI, currentJ) == 0) {
           bSwitch = true
         }
         boardWithCheckers()
@@ -115,10 +116,12 @@ object Main extends App {
           //Switch player
           if (player == 1) {
             player = 2
+            adversePlayer = 1
             switchplayer()
           }
           else {
             player = 1
+            adversePlayer = 2
             switchplayer()
           }
         }
@@ -152,11 +155,11 @@ object Main extends App {
         if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
         x = checker.spaceCenterX(i)(j)
         y = checker.spaceCenterY(i)(j)
-        println("bug",i,j,x,y)
+        println("bug", i, j, x, y)
         display.drawFilledCircle(x, y, checker.diam)
-//        if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
-        if (checker.spaceOccupancy(i)(j) < 0) display.drawFancyString(checker.spaceCenterX(i)(j) + 15,checker.spaceCenterY(i)(j) + 80,"K",Color.black,80)
+        if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
         else colorSpaceGreen(i, j)
+        if (checker.spaceOccupancy(i)(j) < 0) display.drawFancyString(checker.spaceCenterX(i)(j) + 15, checker.spaceCenterY(i)(j) + 80, "K", Color.black, 80)
       }
       else {
         display.setColor(Color.BLACK)
