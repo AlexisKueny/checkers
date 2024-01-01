@@ -7,10 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Attempting to implement backwards movement for king">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="King movement partially implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -323,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704126828284</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="King movement partially implemented">
+      <option name="closed" value="true" />
+      <created>1704129452515</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1704129452515</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +397,8 @@
     <MESSAGE value="Kingless gameplay" />
     <MESSAGE value="King piece implemented" />
     <MESSAGE value="Attempting to implement backwards movement for king" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempting to implement backwards movement for king" />
+    <MESSAGE value="King movement partially implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="King movement partially implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

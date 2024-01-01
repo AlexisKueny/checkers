@@ -95,7 +95,17 @@ object Main extends App {
         else {
           //Movement with hops
           bSwitch = false
-          if (i == currentI + iHop) {
+          booleanSwitch = false
+          if (checker.spaceOccupancy(currentI)(currentJ) < 0){
+            if ((i == currentI + iHop) || (i == currentI - iHop)) booleanSwitch = true
+          }
+          else{
+            if (i == currentI + iHop){
+              booleanSwitch = true
+            }
+          }
+
+          if ( booleanSwitch) {
             if (checker.spaceOccupancy(i)(j) == 3) {
               if (j > currentJ) {
                 if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2)(j) = 0
