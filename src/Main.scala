@@ -146,15 +146,15 @@ object Main extends App {
       var x = 0
       var y = 0
       if (checker.spaceOccupancy(i)(j) != 0) {
-        if ((checker.spaceOccupancy(i)(j) == 1) || (checker.spaceOccupancy(i)(j) == -1)) display.setColor(checker.colB)
+        if (math.abs(checker.spaceOccupancy(i)(j)) == 1) display.setColor(checker.colB)
         else display.setColor(checker.colW)
-        if ((checker.spaceOccupancy(i)(j) == 2) || (checker.spaceOccupancy(i)(j) == -2)) display.setColor(checker.colW)
+        if (math.abs(checker.spaceOccupancy(i)(j)) == 2) display.setColor(checker.colW)
         if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
         x = checker.spaceCenterX(i)(j)
         y = checker.spaceCenterY(i)(j)
         println("bug",i,j,x,y)
         display.drawFilledCircle(x, y, checker.diam)
-        if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
+//        if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
         if (checker.spaceOccupancy(i)(j) < 0) display.drawFancyString(checker.spaceCenterX(i)(j) + 15,checker.spaceCenterY(i)(j) + 80,"K",Color.black,80)
         else colorSpaceGreen(i, j)
       }

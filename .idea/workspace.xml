@@ -7,7 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="King piece implemented" />
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="King piece implemented">
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,6 +143,7 @@
       <workItem from="1703945567127" duration="2517000" />
       <workItem from="1703954937871" duration="13256000" />
       <workItem from="1704010804976" duration="1616000" />
+      <workItem from="1704122775387" duration="445000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -301,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704012388362</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="King piece implemented">
+      <option name="closed" value="true" />
+      <created>1704122997702</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1704122997702</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
