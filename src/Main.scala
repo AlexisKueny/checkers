@@ -152,7 +152,7 @@ object Main extends App {
         if (checker.spaceOccupancy(i)(j) == 3) display.setColor(checker.colG)
         x = checker.spaceCenterX(i)(j)
         y = checker.spaceCenterY(i)(j)
-        //        println(i,j)
+        println("bug",i,j,x,y)
         display.drawFilledCircle(x, y, checker.diam)
         if (checker.spaceOccupancy(i)(j) < 3) display.drawFilledCircle(x, y, checker.diam)
         if (checker.spaceOccupancy(i)(j) < 0) display.drawFancyString(checker.spaceCenterX(i)(j) + 15,checker.spaceCenterY(i)(j) + 80,"K",Color.black,80)
