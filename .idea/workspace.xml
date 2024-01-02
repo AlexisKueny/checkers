@@ -7,9 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="King movement partially implemented">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Bug resolution in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +146,7 @@
       <workItem from="1703954937871" duration="13256000" />
       <workItem from="1704010804976" duration="1616000" />
       <workItem from="1704122775387" duration="445000" />
-      <workItem from="1704219487155" duration="6528000" />
+      <workItem from="1704219487155" duration="9747000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -339,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704130325109</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Bug resolution in progress">
+      <option name="closed" value="true" />
+      <created>1704226051960</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1704226051960</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,7 +413,8 @@
     <MESSAGE value="King piece implemented" />
     <MESSAGE value="Attempting to implement backwards movement for king" />
     <MESSAGE value="King movement partially implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="King movement partially implemented" />
+    <MESSAGE value="Bug resolution in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug resolution in progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

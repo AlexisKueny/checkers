@@ -93,22 +93,26 @@ object Main extends App {
           booleanSwitch = false
           if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
             if ((i == currentI + iHop) || (i == currentI - iHop)) booleanSwitch = true
+            println("tot",i,j,iHop,currentI + iHop,booleanSwitch)
           }
           else {
             if (i == currentI + iHop) {
               booleanSwitch = true
             }
           }
-
           if (booleanSwitch) {
+            var fac: Int = 1
+            if((checker.spaceOccupancy(currentI)(currentJ) == -2) && (i>currentI))fac = -1
+            if((checker.spaceOccupancy(currentI)(currentJ) == -1) && (i<currentI))fac = -1
+
             if (checker.spaceOccupancy(i)(j) == 3) {
               if (j > currentJ) {
-                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2)(j) = 0
-                else checker.spaceOccupancy(currentI + iHopS2)(currentJ) = 0 //opposing checker
+                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2*fac)(j) = 0
+                else checker.spaceOccupancy(currentI + iHopS2*fac)(currentJ) = 0 //opposing checker
               }
               else {
-                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2)(currentJ) = 0
-                else checker.spaceOccupancy(currentI + iHopS2)(j) = 0 //opposing checker
+                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2*fac)(currentJ) = 0
+                else checker.spaceOccupancy(currentI + iHopS2*fac)(j) = 0 //opposing checker
               }
             }
             checker.clearGreen()
