@@ -21,7 +21,6 @@ class Checker {
         x += 200
         spaceCenterX(i)(j) = x
         spaceCenterY(i)(j) = y
-        //        println(x,y)
         if (i < 3) spaceOccupancy(i)(j) = 1
         if (i > 4) spaceOccupancy(i)(j) = 2
       }
@@ -42,7 +41,6 @@ class Checker {
   }
 
   def checkGreen(i: Int, j: Int, badj: Boolean, player: Int, bKing : Boolean): Int = {
-    println("checkGreen",bKing)
     var adversePlayer = 2
     if (player == 2) adversePlayer = 1
     var ir = 0
@@ -90,12 +88,10 @@ class Checker {
           bSwitch = false
           if (bKing) {
             if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true
-            println("toto",spaceOccupancy(i-1)(j),player)
           }
           else {
             if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
           }
-          println("BooleanTest",bSwitch,bKing)
           if (bSwitch) { //?
             if (spaceOccupancy(i - 2)(j-1) == 0) {
               ir = 40
@@ -106,7 +102,6 @@ class Checker {
             bSwitch = false
             if (bKing){
               if (math.abs(spaceOccupancy(i - 1)(j + 1)) == player) bSwitch = true
-              println("toto2",spaceOccupancy(i-1)(j),player)
             }
             else{
               if (math.abs(spaceOccupancy(i - 1)(j + 1)) == adversePlayer) bSwitch = true
@@ -126,7 +121,6 @@ class Checker {
             bSwitch = false
             if (bKing){
               if (math.abs(spaceOccupancy(i - 1)(j - 1)) == player) bSwitch = true
-              println("toto3",spaceOccupancy(i-1)(j),player)
             }
             else{
               if (math.abs(spaceOccupancy(i - 1)(j - 1)) == adversePlayer) bSwitch = true

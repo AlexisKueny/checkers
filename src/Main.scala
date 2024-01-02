@@ -14,6 +14,8 @@ object Main extends App {
   var mb = 0
   var currentI: Int = 0
   var currentJ: Int = 0
+  var bSwitch: Boolean = false
+  var bLock: Boolean = false
 
   //Run/////////////////////////////////////////////////
   drawEmptyBoard()
@@ -34,7 +36,7 @@ object Main extends App {
         //checker initialization
         checker.checkerInit()
         boardWithCheckers()
-        checker.checkerTest() //to delete
+//        checker.checkerTest() //to delete
         player = 2
         adversePlayer = 1
         switchplayer()
@@ -43,20 +45,23 @@ object Main extends App {
 
       //Left click
       if (mb == 1) {
-        currentI = i
-        currentJ = j
-        checker.clearGreen()
-        boardWithCheckers()
-        if (tuple._1) {
-          //Test if an adjacent space is green
-          var ira = 0
-          ira = checker.checkGreen(i, j, badj = true, player, bKing = false)
-          if (checker.spaceOccupancy(i)(j) < 0) checker.checkGreen(i, j, badj = true, adversePlayer, bKing = false)
-          //Test if hop over a checker
-          var ir1 = 0
-          checker.hopLeftClick(player, currentI, currentJ, bKing = false)
-          if (checker.spaceOccupancy(i)(j) < 0) checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
+        //Don't change
+        if (!bLock) {
+          currentI = i
+          currentJ = j
+          checker.clearGreen()
           boardWithCheckers()
+          if (tuple._1) {
+            //Test if an adjacent space is green
+            var ira = 0
+            ira = checker.checkGreen(i, j, badj = true, player, bKing = false)
+            if (checker.spaceOccupancy(i)(j) < 0) checker.checkGreen(i, j, badj = true, adversePlayer, bKing = false)
+            //Test if hop over a checker
+            var ir1 = 0
+            checker.hopLeftClick(player, currentI, currentJ, bKing = false)
+            if (checker.spaceOccupancy(i)(j) < 0) checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
+            boardWithCheckers()
+          }
         }
       }
       //mouse right click
@@ -67,7 +72,7 @@ object Main extends App {
           iHop = -2
           iHopS2 = -1
         }
-        var bSwitch: Boolean = true
+
         var booleanSwitch: Boolean = false
         if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
           if ((i + 1 == currentI) || (i - 1 == currentI)) booleanSwitch = true
@@ -75,62 +80,66 @@ object Main extends App {
         else {
           if (((player == 2) && (i + 1 == currentI)) || ((player == 1) && (i - 1 == currentI))) booleanSwitch = true
         }
+
         if (booleanSwitch) {
           //Only for adjacent movement
-          println("bug?asdsad", i, j, checker.spaceOccupancy(i)(j))
           if (checker.spaceOccupancy(i)(j) == 3) {
             checker.clearGreen()
-            println("bug?")
+            println("abcd",booleanSwitch,currentI,currentJ,i,j)
             if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
             else checker.spaceOccupancy(i)(j) = player
             checker.spaceOccupancy(currentI)(currentJ) = 0
+            println("toto",checker.spaceOccupancy(i)(j),checker.spaceOccupancy(currentI)(currentJ))
           }
           bSwitch = true
         }
         else {
           //Movement with hops
-          bSwitch = false
-          booleanSwitch = false
-          if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
-            if ((i == currentI + iHop) || (i == currentI - iHop)) booleanSwitch = true
-            println("tot",i,j,iHop,currentI + iHop,booleanSwitch)
-          }
-          else {
-            if (i == currentI + iHop) {
-              booleanSwitch = true
+          println("hello")
+          if (math.abs(currentI - i) <= 2) {
+            println("bug?","current i" + currentI,i)
+            bSwitch = false
+            booleanSwitch = false
+            if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
+              if ((i == currentI + iHop) || (i == currentI - iHop)) booleanSwitch = true
             }
-          }
-          if (booleanSwitch) {
-            var fac: Int = 1
-            if((checker.spaceOccupancy(currentI)(currentJ) == -2) && (i>currentI))fac = -1
-            if((checker.spaceOccupancy(currentI)(currentJ) == -1) && (i<currentI))fac = -1
+            else {
+              if (i == currentI + iHop) {
+                booleanSwitch = true
+              }
+            }
+            if (booleanSwitch) {
+              var fac: Int = 1
+              if ((checker.spaceOccupancy(currentI)(currentJ) == -2) && (i > currentI)) fac = -1
+              if ((checker.spaceOccupancy(currentI)(currentJ) == -1) && (i < currentI)) fac = -1
 
-            if (checker.spaceOccupancy(i)(j) == 3) {
-              if (j > currentJ) {
-                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2*fac)(j) = 0
-                else checker.spaceOccupancy(currentI + iHopS2*fac)(currentJ) = 0 //opposing checker
+              if (checker.spaceOccupancy(i)(j) == 3) {
+                if (j > currentJ) {
+                  if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2 * fac)(j) = 0
+                  else checker.spaceOccupancy(currentI + iHopS2 * fac)(currentJ) = 0 //opposing checker
+                }
+                else {
+                  if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2 * fac)(currentJ) = 0
+                  else checker.spaceOccupancy(currentI + iHopS2 * fac)(j) = 0 //opposing checker
+                }
               }
-              else {
-                if (currentI % 2 == 0) checker.spaceOccupancy(currentI + iHopS2*fac)(currentJ) = 0
-                else checker.spaceOccupancy(currentI + iHopS2*fac)(j) = 0 //opposing checker
+              checker.clearGreen()
+              if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
+              else checker.spaceOccupancy(i)(j) = player
+              checker.spaceOccupancy(currentI)(currentJ) = 0
+              currentI = i
+              currentJ = j
+              if (checker.hopLeftClick(player, currentI, currentJ, bKing = false) == 0) {
+                bSwitch = true
+                bLock = false
               }
+              else bLock = true
             }
-            checker.clearGreen()
-            if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
-            else checker.spaceOccupancy(i)(j) = player
-            checker.spaceOccupancy(currentI)(currentJ) = 0
-            currentI = i
-            currentJ = j
-            if (checker.hopLeftClick(player, currentI, currentJ, bKing = false) == 0) {
-              bSwitch = true
-            }
+            if ((player == 1) && (i == 7)) checker.kingPiece(i, j, player)
+            if ((player == 2) && (i == 0)) checker.kingPiece(i, j, player)
+
           }
         }
-        if ((player == 1) && (i == 7)) checker.kingPiece(i, j, player)
-        if ((player == 2) && (i == 0)) checker.kingPiece(i, j, player)
-        //        if (checker.hopLeftClick(player, currentI, currentJ) == 0) {
-        //          bSwitch = true
-        //        }
         boardWithCheckers()
         if (bSwitch) {
           //Switch player
