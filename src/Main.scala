@@ -92,6 +92,9 @@ object Main extends App {
             println("toto",checker.spaceOccupancy(i)(j),checker.spaceOccupancy(currentI)(currentJ))
           }
           bSwitch = true
+          if ((player == 1) && (i == 7)) checker.kingPiece(i, j, player)
+          if ((player == 2) && (i == 0)) checker.kingPiece(i, j, player)
+
         }
         else {
           //Movement with hops
