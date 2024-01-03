@@ -7,7 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Finished">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Finished without bugs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +149,7 @@
       <workItem from="1704010804976" duration="1616000" />
       <workItem from="1704122775387" duration="445000" />
       <workItem from="1704219487155" duration="13929000" />
-      <workItem from="1704297485207" duration="2922000" />
+      <workItem from="1704297485207" duration="5079000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -386,7 +391,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704300219662</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Finished without bugs">
+      <option name="closed" value="true" />
+      <created>1704300763950</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1704300763950</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="checkered board created" />
     <MESSAGE value="start button created" />
     <MESSAGE value="checker method" />
     <MESSAGE value="25/12/2023 18:22" />
@@ -456,7 +468,8 @@
     <MESSAGE value="Alpha" />
     <MESSAGE value="Buggy movement" />
     <MESSAGE value="Finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished" />
+    <MESSAGE value="Finished without bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished without bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

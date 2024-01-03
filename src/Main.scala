@@ -17,6 +17,7 @@ object Main extends App {
   var bSwitch: Boolean = false
   var bLock: Boolean = false
   var bInGame: Boolean = false
+  var bKingSwitch : Boolean = false
 
   //Run/////////////////////////////////////////////////
   drawEmptyBoard()
@@ -26,7 +27,6 @@ object Main extends App {
       // Get the mouse position from the event
       px = e.getX
       py = e.getY
-      println("mouse position", px, py)
       val tuple = checker.checkSpace(px, py, player) //returns boolean,i,j
       bInGame = tuple._1
       val i = tuple._2
@@ -36,10 +36,9 @@ object Main extends App {
       if ((gamePhase == 0) && (50 to 150).contains(px) && (50 to 150).contains(py)) {
         //checker initialization
         checker.checkerInit()
-        println("mousePosition2", px, py)
         gamePhase = 1
+        checker.checkerTest()
         boardWithCheckers()
-        //        checker.checkerTest() //to delete
         player = 2
         adversePlayer = 1
         switchplayer()
@@ -59,14 +58,16 @@ object Main extends App {
                 boardWithCheckers()
                 if (tuple._1) {
                   //Test if an adjacent space is green
-                  var ira = 0
-                  ira = checker.checkGreen(i, j, badj = true, player, bKing = false)
-                  if (checker.spaceOccupancy(i)(j) < 0) checker.checkGreen(i, j, badj = true, adversePlayer, bKing = false)
-                  //Test if hop over a checker
-                  var ir1 = 0
-                  checker.hopLeftClick(player, currentI, currentJ, bKing = false)
-                  if (checker.spaceOccupancy(i)(j) < 0) checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
-                  boardWithCheckers()
+                  if (math.abs(checker.spaceOccupancy(i)(j)) == player) {
+                    var ira = 0
+                    ira = checker.checkGreen(i, j, badj = true, player, bKing = false)
+                    if (checker.spaceOccupancy(i)(j) < 0) checker.checkGreen(i, j, badj = true, adversePlayer, bKing = false)
+                    //Test if hop over a checker
+                    var ir1 = 0
+                    checker.hopLeftClick(player, currentI, currentJ, bKing = false)
+                    if (checker.spaceOccupancy(i)(j) < 0) checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
+                    boardWithCheckers()
+                  }
                 }
               }
             }
@@ -78,7 +79,6 @@ object Main extends App {
                 iHop = -2
                 iHopS2 = -1
               }
-              println("rightclick used", bSwitch)
               var booleanSwitch: Boolean = false
               if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
                 if ((i + 1 == currentI) || (i - 1 == currentI)) booleanSwitch = true
@@ -101,7 +101,6 @@ object Main extends App {
               }
               else {
                 //Movement with hops
-                println("Hops", bSwitch)
                 if (checker.spaceOccupancy(i)(j) == 3) {
                   if (math.abs(currentI - i) <= 2) {
                     bSwitch = false
@@ -135,6 +134,8 @@ object Main extends App {
                       checker.spaceOccupancy(currentI)(currentJ) = 0
                       currentI = i
                       currentJ = j
+                      println("bugg",player,checker.spaceOccupancy(i)(j))
+
                       if (checker.hopLeftClick(player, currentI, currentJ, bKing = false) == 0) {
                         bSwitch = true
                         bLock = false
@@ -149,7 +150,6 @@ object Main extends App {
               }
               boardWithCheckers()
               if (bSwitch) {
-                println("changeplayerPhase", bSwitch)
                 //Switch player
                 if (player == 1) {
                   player = 2
