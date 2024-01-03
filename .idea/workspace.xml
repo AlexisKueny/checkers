@@ -7,9 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Alpha">
+    <list default="true" id="80d551d3-c81b-4413-add3-97f54a719437" name="Changes" comment="Buggy movement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Checker.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checker.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$$anon$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Checkers/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Checkers/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +149,7 @@
       <workItem from="1704010804976" duration="1616000" />
       <workItem from="1704122775387" duration="445000" />
       <workItem from="1704219487155" duration="13929000" />
-      <workItem from="1704297485207" duration="1560000" />
+      <workItem from="1704297485207" duration="2621000" />
     </task>
     <task id="LOCAL-00001" summary="checkered board created">
       <option name="closed" value="true" />
@@ -372,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704233423600</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Buggy movement">
+      <option name="closed" value="true" />
+      <created>1704299236701</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1704299236701</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +451,8 @@
     <MESSAGE value="Bug resolution in progress" />
     <MESSAGE value="Game near completion" />
     <MESSAGE value="Alpha" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alpha" />
+    <MESSAGE value="Buggy movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Buggy movement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

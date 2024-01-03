@@ -30,8 +30,6 @@ object Main extends App {
       bInGame = tuple._1
       val i = tuple._2
       val j = tuple._3
-      println("bInGame test", bInGame)
-
 
       //gamephase = 0 until start button pressed
       if ((gamePhase == 0) && (50 to 150).contains(px) && (50 to 150).contains(py)) {
@@ -76,7 +74,7 @@ object Main extends App {
             iHop = -2
             iHopS2 = -1
           }
-
+          println("rightclick used",bSwitch)
           var booleanSwitch: Boolean = false
           if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
             if ((i + 1 == currentI) || (i - 1 == currentI)) booleanSwitch = true
@@ -89,21 +87,19 @@ object Main extends App {
             //Only for adjacent movement
             if (checker.spaceOccupancy(i)(j) == 3) {
               checker.clearGreen()
-              println("abcd", booleanSwitch, currentI, currentJ, i, j)
               if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
               else checker.spaceOccupancy(i)(j) = player
               checker.spaceOccupancy(currentI)(currentJ) = 0
-              println("toto", checker.spaceOccupancy(i)(j), checker.spaceOccupancy(currentI)(currentJ))
+              bSwitch = true
             }
-            bSwitch = true
             if ((player == 1) && (i == 7)) checker.kingPiece(i, j, player)
             if ((player == 2) && (i == 0)) checker.kingPiece(i, j, player)
           }
           else {
             //Movement with hops
+            println("Hops",bSwitch)
             if (checker.spaceOccupancy(i)(j) == 3) {
               if (math.abs(currentI - i) <= 2) {
-                println("bug?", "current i" + currentI, i)
                 bSwitch = false
                 booleanSwitch = false
                 if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
@@ -149,6 +145,7 @@ object Main extends App {
           }
           boardWithCheckers()
           if (bSwitch) {
+            println("changeplayerPhase",bSwitch)
             //Switch player
             if (player == 1) {
               player = 2
@@ -160,6 +157,7 @@ object Main extends App {
               adversePlayer = 2
               switchplayer()
             }
+            bSwitch = false
           }
         }
       }
