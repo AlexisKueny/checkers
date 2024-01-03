@@ -135,8 +135,15 @@ object Main extends App {
                       currentI = i
                       currentJ = j
                       println("bugg",player,checker.spaceOccupancy(i)(j))
-
-                      if (checker.hopLeftClick(player, currentI, currentJ, bKing = false) == 0) {
+                      bKingSwitch = false
+                      if (checker.spaceOccupancy(i)(j) < 0){
+                        println("hopLeftClickTest",checker.hopLeftClick(player,currentI,currentJ,bKing=true))
+                        if (checker.hopLeftClick(player, currentI, currentJ, bKing = true) == 0){
+                          bKingSwitch = true
+                        }
+                      }
+                      else if (checker.hopLeftClick(player, currentI, currentJ, bKing = false) == 0) bKingSwitch = true
+                      if (bKingSwitch) {
                         bSwitch = true
                         bLock = false
                       }
