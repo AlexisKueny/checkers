@@ -1,0 +1,97 @@
+Index: src/Checker.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import Main.{checker, display}\r\nimport java.awt.Color\r\n\r\nclass Checker {\r\n  val diam: Int = 100\r\n  val spaceOccupancy: Array[Array[Int]] = Array.ofDim[Int](8, 4)\r\n  val spaceCenterX: Array[Array[Int]] = Array.ofDim[Int](8, 4)\r\n  val spaceCenterY: Array[Array[Int]] = Array.ofDim[Int](8, 4)\r\n  val colW: Color = Color.RED //spaceOccupancy = 1\r\n  val colB: Color = new Color(192, 192, 192) //spaceOccupancy = 2\r\n  val colG: Color = Color.green\r\n\r\n  def checkerInit(): Unit = {\r\n    var x: Int = 100\r\n    var y: Int = -100\r\n    for (i <- 0 to 7) {\r\n      y += 100\r\n      if (i % 2 == 0) x = 100\r\n      if (i % 2 != 0) x = 0\r\n      for (j <- 0 to 3) {\r\n        x += 200\r\n        spaceCenterX(i)(j) = x\r\n        spaceCenterY(i)(j) = y\r\n        if (i < 3) spaceOccupancy(i)(j) = 1\r\n        if (i > 4) spaceOccupancy(i)(j) = 2\r\n      }\r\n    }\r\n  }\r\n\r\n  //Returns i and j based on px and py mouse position\r\n  def checkSpace(px: Int, py: Int, player: Int): (Boolean, Int, Int) = {\r\n    for (i <- 0 to 7; j <- 0 to 3) {\r\n      if ((px >= spaceCenterX(i)(j)) && (px <= spaceCenterX(i)(j) + 100)) {\r\n        if ((py >= spaceCenterY(i)(j)) && (py <= spaceCenterY(i)(j) + 100)) {\r\n          if (math.abs(spaceOccupancy(i)(j)) == player) return (true, i, j)\r\n          else return (true, i, j)\r\n        }\r\n      }\r\n    }\r\n    (false, -1, -1)\r\n  }\r\n\r\n  def checkGreen(i: Int, j: Int, badj: Boolean, player: Int, bKing : Boolean): Int = {\r\n    var adversePlayer = 2\r\n    if (player == 2) adversePlayer = 1\r\n    var ir = 0\r\n    var bip = false\r\n    var bSwitch = false\r\n    if (i % 2 == 0) bip = true\r\n    if (player == 2) {\r\n      //player black\r\n      if (badj) {\r\n        //scan adjacent empty spaces\r\n        if (i == 0) return 0\r\n        if (bip) {\r\n          //i is even\r\n          if (spaceOccupancy(i - 1)(j) == 0) {\r\n            ir = 10\r\n            spaceOccupancy(i - 1)(j) = 3\r\n          }\r\n          if (j + 1 <= 3) {\r\n            if (spaceOccupancy(i - 1)(j + 1) == 0) {\r\n              ir += 20\r\n              spaceOccupancy(i - 1)(j + 1) = 3\r\n            }\r\n          }\r\n        }\r\n        else {\r\n          //i is odd\r\n          if (j - 1 >= 0) {\r\n            if (spaceOccupancy(i - 1)(j - 1) == 0) {\r\n              ir = 11\r\n              spaceOccupancy(i - 1)(j - 1) = 3\r\n            }\r\n          }\r\n          if (spaceOccupancy(i - 1)(j) == 0) {\r\n            ir += 21\r\n            spaceOccupancy(i - 1)(j) = 3\r\n          }\r\n        }\r\n        return ir\r\n      }\r\n      else {\r\n        //hop over a checker\r\n        if (i <= 1) return 0\r\n        if (bip) {\r\n          //i is even\r\n          bSwitch = false\r\n          if (bKing) {\r\n            if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true\r\n          }\r\n          else {\r\n            if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true\r\n          }\r\n          if (bSwitch) { //?\r\n            if (spaceOccupancy(i - 2)(j-1) == 0) {\r\n              ir = 40\r\n              spaceOccupancy(i - 2)(j-1) = 3\r\n            }\r\n          }\r\n          if (j != 3) {\r\n            bSwitch = false\r\n            if (bKing){\r\n              if (math.abs(spaceOccupancy(i - 1)(j + 1)) == player) bSwitch = true\r\n            }\r\n            else{\r\n              if (math.abs(spaceOccupancy(i - 1)(j + 1)) == adversePlayer) bSwitch = true\r\n            }\r\n            if (bSwitch) {\r\n              if (spaceOccupancy(i - 2)(j + 1) == 0) {\r\n                if (ir == 0) ir = 42\r\n                if (ir == 40) ir = 50\r\n                spaceOccupancy(i - 2)(j + 1) = 3\r\n              }\r\n            }\r\n          }\r\n        }\r\n        else {\r\n          //i is odd\r\n          if (j - 1 >= 0) {\r\n            bSwitch = false\r\n            if (bKing){\r\n              if (math.abs(spaceOccupancy(i - 1)(j - 1)) == player) bSwitch = true\r\n            }\r\n            else{\r\n              if (math.abs(spaceOccupancy(i - 1)(j - 1)) == adversePlayer) bSwitch = true\r\n            }\r\n            if (bSwitch) {\r\n              if (spaceOccupancy(i - 2)(j - 1) == 0) {\r\n                ir = 41\r\n                spaceOccupancy(i - 2)(j - 1) = 3\r\n              }\r\n            }\r\n          }\r\n          if (j < 3) {\r\n            bSwitch = false\r\n            if (bKing){\r\n              if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true\r\n            }\r\n            else{\r\n              if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true\r\n            }\r\n            if (bSwitch) {\r\n              if (spaceOccupancy(i - 2)(j + 1) == 0) {\r\n                spaceOccupancy(i - 2)(j + 1) = 3\r\n                if (ir == 41) ir = 51\r\n                else ir = 43\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n    else {\r\n      //player white\r\n      if (badj) {\r\n        //test if neighbouring spaces are green\r\n        if (i == 7) return 0\r\n        else {\r\n          if (bip) {\r\n            //case i is even\r\n            if (spaceOccupancy(i + 1)(j) == 0) {\r\n              ir = 10\r\n              spaceOccupancy(i + 1)(j) = 3\r\n            }\r\n            if (j + 1 < 4) {\r\n              if (spaceOccupancy(i + 1)(j + 1) == 0) {\r\n                ir += 20\r\n                spaceOccupancy(i + 1)(j + 1) = 3\r\n              }\r\n            }\r\n          }\r\n          else {\r\n            //case i is odd\r\n            if (j - 1 >= 0) {\r\n              if (spaceOccupancy(i + 1)(j - 1) == 0) {\r\n                ir = 11\r\n                spaceOccupancy(i + 1)(j - 1) = 3\r\n              }\r\n            }\r\n            if (spaceOccupancy(i + 1)(j) == 0) {\r\n              ir += 21\r\n              spaceOccupancy(i + 1)(j) = 3\r\n            }\r\n          }\r\n          return ir\r\n        }\r\n      }\r\n      //not adjacent\r\n      if (i >= 6) return 0\r\n      if (bip) {\r\n        //i is even\r\n        if (j >= 1) {\r\n          bSwitch = false\r\n          if(bKing){\r\n            if (math.abs(spaceOccupancy(i + 1)(j)) == player) bSwitch = true\r\n          }\r\n          else{\r\n            if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true\r\n          }\r\n          if (bSwitch) {\r\n            if (spaceOccupancy(i + 2)(j - 1) == 0) {\r\n              ir = 40\r\n              spaceOccupancy(i + 2)(j - 1) = 3\r\n            }\r\n          }\r\n        }\r\n        if (j != 3) {\r\n          bSwitch = false\r\n          if(bKing){\r\n            if (math.abs(spaceOccupancy(i + 1)(j + 1)) == player) bSwitch = true\r\n          }\r\n          else{\r\n            if (math.abs(spaceOccupancy(i + 1)(j+1)) == adversePlayer) bSwitch = true\r\n          }\r\n          if (bSwitch) {\r\n            if (spaceOccupancy(i + 2)(j + 1) == 0) {\r\n              if (ir == 40) ir = 50\r\n              else ir = 42\r\n              spaceOccupancy(i + 2)(j + 1) = 3\r\n            }\r\n          }\r\n        }\r\n      }\r\n      else {\r\n        //i is odd\r\n        if (j != 3) {\r\n          bSwitch = false\r\n          if(bKing){\r\n            if (math.abs(spaceOccupancy(i + 1)(j)) == player) bSwitch = true\r\n          }\r\n          else{\r\n            if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true\r\n          }\r\n          if (bSwitch) {\r\n            if (spaceOccupancy(i + 2)(j + 1) == 0) {\r\n              ir = 41\r\n              spaceOccupancy(i + 2)(j + 1) = 3\r\n            }\r\n          }\r\n        }\r\n        if (j - 1 >= 0) {\r\n          bSwitch = false\r\n          if(bKing){\r\n            if (math.abs(spaceOccupancy(i + 1)(j - 1)) == player) bSwitch = true\r\n          }\r\n          else{\r\n            if (math.abs(spaceOccupancy(i + 1)(j - 1)) == adversePlayer) bSwitch = true\r\n          }\r\n          if (bSwitch) {\r\n            if (spaceOccupancy(i + 2)(j - 1) == 0) {\r\n              spaceOccupancy(i + 2)(j - 1) = 3\r\n              if (ir == 41) ir = 51\r\n              else ir = 43\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n    ir\r\n  }\r\n\r\n  def clearGreen(): Unit = {\r\n    for (i <- 0 to 7; j <- 0 to 3) {\r\n      if (spaceOccupancy(i)(j) == 3) {\r\n        spaceOccupancy(i)(j) = 0\r\n        val xstart = checker.spaceCenterX(i)(j)\r\n        val ystart = checker.spaceCenterY(i)(j)\r\n        for (x <- xstart to (xstart + 100); y <- ystart to ystart + 100) display.setPixel(x, y, 0)\r\n      }\r\n    }\r\n  }\r\n\r\n  //Multiple hops\r\n  def hopLeftClick(player: Int, iStart: Int, jStart: Int,bKing: Boolean): Int = {\r\n    var iRet: Int = 0\r\n    var ir: Int = 0\r\n    iRet = checkGreen(iStart, jStart, badj = false, player,bKing)\r\n    if (iRet == 0) return iRet\r\n    if (player == 2) { //red?\r\n      for (is <- iStart - 2 to 2 by -2) {\r\n        iRet = 0\r\n        for (js <- 0 to 3) {\r\n          if (spaceOccupancy(is)(js) == 3) {\r\n            ir = checkGreen(is, js, badj = false, player,bKing)\r\n            iRet += ir\r\n          }\r\n        }\r\n        if (iRet == 0) return 1\r\n      }\r\n      1\r\n    }\r\n    else {\r\n      //player 1\r\n      for (is <- iStart + 2 to 5 by 2) {\r\n        iRet = 0\r\n        for (js <- 0 to 3) {\r\n          if (spaceOccupancy(is)(js) == 3) {\r\n            ir = checkGreen(is, js, badj = false, player,bKing)\r\n            iRet += ir\r\n          }\r\n        }\r\n        if (iRet == 0) return 1\r\n      }\r\n      1\r\n    }\r\n  }\r\n  def kingPiece (i: Int,j: Int,player: Int): Unit = {\r\n    if (player == 2) spaceOccupancy(i)(j) = -2\r\n    else spaceOccupancy(i)(j) = -1\r\n  }\r\n\r\n  def checkerTest(): Unit = {\r\n    for (i <- 0 to 7; j <- 0 to 3) {\r\n      if (spaceOccupancy(i)(j) != 3) spaceOccupancy(i)(j) = 0\r\n    }\r\n    spaceOccupancy(4)(2) = -2\r\n    spaceOccupancy(1)(0) = -2\r\n    spaceOccupancy(1)(1) = 1\r\n    spaceOccupancy(2)(0) = 1\r\n    spaceOccupancy(5)(3) = 1\r\n    spaceOccupancy(3)(2) = 1\r\n    spaceOccupancy(3)(3) = 1\r\n    spaceOccupancy(4)(1) = 1\r\n    spaceOccupancy(6)(1) = 2\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Checker.scala b/src/Checker.scala
+--- a/src/Checker.scala	
++++ b/src/Checker.scala	
+@@ -93,7 +93,7 @@
+             if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
+           }
+           if (bSwitch) { //?
+-            if (spaceOccupancy(i - 2)(j-1) == 0) {
++            if (spaceOccupancy(i - 2)(j-1) == 0 || spaceOccupancy(i - 2)(j-1) == 3) {
+               ir = 40
+               spaceOccupancy(i - 2)(j-1) = 3
+             }
+@@ -107,7 +107,7 @@
+               if (math.abs(spaceOccupancy(i - 1)(j + 1)) == adversePlayer) bSwitch = true
+             }
+             if (bSwitch) {
+-              if (spaceOccupancy(i - 2)(j + 1) == 0) {
++              if (spaceOccupancy(i - 2)(j + 1) == 0 || spaceOccupancy(i - 2)(j + 1) == 3) { //?
+                 if (ir == 0) ir = 42
+                 if (ir == 40) ir = 50
+                 spaceOccupancy(i - 2)(j + 1) = 3
+@@ -126,7 +126,7 @@
+               if (math.abs(spaceOccupancy(i - 1)(j - 1)) == adversePlayer) bSwitch = true
+             }
+             if (bSwitch) {
+-              if (spaceOccupancy(i - 2)(j - 1) == 0) {
++              if (spaceOccupancy(i - 2)(j - 1) == 0 || spaceOccupancy(i - 2)(j - 1) == 3) {
+                 ir = 41
+                 spaceOccupancy(i - 2)(j - 1) = 3
+               }
+@@ -141,7 +141,7 @@
+               if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
+             }
+             if (bSwitch) {
+-              if (spaceOccupancy(i - 2)(j + 1) == 0) {
++              if (spaceOccupancy(i - 2)(j + 1) == 0 || spaceOccupancy(i - 2)(j + 1) == 3) {
+                 spaceOccupancy(i - 2)(j + 1) = 3
+                 if (ir == 41) ir = 51
+                 else ir = 43
+@@ -159,12 +159,12 @@
+         else {
+           if (bip) {
+             //case i is even
+-            if (spaceOccupancy(i + 1)(j) == 0) {
++            if (spaceOccupancy(i + 1)(j) == 0 || spaceOccupancy(i + 1)(j) == 3) {
+               ir = 10
+               spaceOccupancy(i + 1)(j) = 3
+             }
+             if (j + 1 < 4) {
+-              if (spaceOccupancy(i + 1)(j + 1) == 0) {
++              if (spaceOccupancy(i + 1)(j + 1) == 0 || spaceOccupancy(i + 1)(j + 1) == 3) {
+                 ir += 20
+                 spaceOccupancy(i + 1)(j + 1) = 3
+               }
+@@ -173,7 +173,7 @@
+           else {
+             //case i is odd
+             if (j - 1 >= 0) {
+-              if (spaceOccupancy(i + 1)(j - 1) == 0) {
++              if (spaceOccupancy(i + 1)(j - 1) == 0 || spaceOccupancy(i + 1)(j - 1) == 3) {
+                 ir = 11
+                 spaceOccupancy(i + 1)(j - 1) = 3
+               }
+@@ -214,7 +214,7 @@
+             if (math.abs(spaceOccupancy(i + 1)(j+1)) == adversePlayer) bSwitch = true
+           }
+           if (bSwitch) {
+-            if (spaceOccupancy(i + 2)(j + 1) == 0) {
++            if (spaceOccupancy(i + 2)(j + 1) == 0 || spaceOccupancy(i + 2)(j + 1) == 3 ) {
+               if (ir == 40) ir = 50
+               else ir = 42
+               spaceOccupancy(i + 2)(j + 1) = 3
+@@ -233,7 +233,7 @@
+             if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
+           }
+           if (bSwitch) {
+-            if (spaceOccupancy(i + 2)(j + 1) == 0) {
++            if (spaceOccupancy(i + 2)(j + 1) == 0 || spaceOccupancy(i + 2)(j + 1) == 3) { //?
+               ir = 41
+               spaceOccupancy(i + 2)(j + 1) = 3
+             }
+@@ -248,7 +248,7 @@
+             if (math.abs(spaceOccupancy(i + 1)(j - 1)) == adversePlayer) bSwitch = true
+           }
+           if (bSwitch) {
+-            if (spaceOccupancy(i + 2)(j - 1) == 0) {
++            if (spaceOccupancy(i + 2)(j - 1) == 0 || spaceOccupancy(i + 2)(j - 1) == 3) {
+               spaceOccupancy(i + 2)(j - 1) = 3
+               if (ir == 41) ir = 51
+               else ir = 43

@@ -93,7 +93,7 @@ class Checker {
             if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
           }
           if (bSwitch) { //?
-            if (spaceOccupancy(i - 2)(j-1) == 0) {
+            if ((spaceOccupancy(i - 2)(j-1) == 0) || (spaceOccupancy(i - 2)(j-1) == 3)) {
               ir = 40
               spaceOccupancy(i - 2)(j-1) = 3
             }
@@ -107,7 +107,7 @@ class Checker {
               if (math.abs(spaceOccupancy(i - 1)(j + 1)) == adversePlayer) bSwitch = true
             }
             if (bSwitch) {
-              if (spaceOccupancy(i - 2)(j + 1) == 0) {
+              if ((spaceOccupancy(i - 2)(j + 1) == 0) || (spaceOccupancy(i - 2)(j + 1) == 3)) {
                 if (ir == 0) ir = 42
                 if (ir == 40) ir = 50
                 spaceOccupancy(i - 2)(j + 1) = 3
@@ -126,7 +126,7 @@ class Checker {
               if (math.abs(spaceOccupancy(i - 1)(j - 1)) == adversePlayer) bSwitch = true
             }
             if (bSwitch) {
-              if (spaceOccupancy(i - 2)(j - 1) == 0) {
+              if ((spaceOccupancy(i - 2)(j - 1) == 0) || (spaceOccupancy(i - 2)(j - 1) == 3)) {
                 ir = 41
                 spaceOccupancy(i - 2)(j - 1) = 3
               }
@@ -141,7 +141,7 @@ class Checker {
               if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
             }
             if (bSwitch) {
-              if (spaceOccupancy(i - 2)(j + 1) == 0) {
+              if ((spaceOccupancy(i - 2)(j + 1) == 0) || (spaceOccupancy(i - 2)(j + 1) == 3)) {
                 spaceOccupancy(i - 2)(j + 1) = 3
                 if (ir == 41) ir = 51
                 else ir = 43
@@ -199,7 +199,7 @@ class Checker {
             if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
           }
           if (bSwitch) {
-            if (spaceOccupancy(i + 2)(j - 1) == 0) {
+            if ((spaceOccupancy(i + 2)(j - 1) == 0) || (spaceOccupancy(i + 2)(j - 1) == 3)) {
               ir = 40
               spaceOccupancy(i + 2)(j - 1) = 3
             }
@@ -214,7 +214,7 @@ class Checker {
             if (math.abs(spaceOccupancy(i + 1)(j+1)) == adversePlayer) bSwitch = true
           }
           if (bSwitch) {
-            if (spaceOccupancy(i + 2)(j + 1) == 0) {
+            if ((spaceOccupancy(i + 2)(j + 1) == 0) || (spaceOccupancy(i + 2)(j + 1) == 3)) {
               if (ir == 40) ir = 50
               else ir = 42
               spaceOccupancy(i + 2)(j + 1) = 3
@@ -233,7 +233,7 @@ class Checker {
             if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
           }
           if (bSwitch) {
-            if (spaceOccupancy(i + 2)(j + 1) == 0) {
+            if ((spaceOccupancy(i + 2)(j + 1) == 0) || (spaceOccupancy(i + 2)(j + 1) == 3)) {
               ir = 41
               spaceOccupancy(i + 2)(j + 1) = 3
             }
@@ -248,7 +248,7 @@ class Checker {
             if (math.abs(spaceOccupancy(i + 1)(j - 1)) == adversePlayer) bSwitch = true
           }
           if (bSwitch) {
-            if (spaceOccupancy(i + 2)(j - 1) == 0) {
+            if ((spaceOccupancy(i + 2)(j - 1) == 0) || (spaceOccupancy(i + 2)(j - 1) == 3)) {
               spaceOccupancy(i + 2)(j - 1) = 3
               if (ir == 41) ir = 51
               else ir = 43
