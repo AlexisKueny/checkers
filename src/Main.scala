@@ -18,6 +18,7 @@ object Main extends App {
   var bLock: Boolean = false
   var bInGame: Boolean = false
   var bKingSwitch : Boolean = false
+  var bKing: Boolean = false
 
   //Run/////////////////////////////////////////////////
   drawEmptyBoard()
@@ -81,6 +82,7 @@ object Main extends App {
               }
               var booleanSwitch: Boolean = false
               if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
+                bKing=true
                 if ((i + 1 == currentI) || (i - 1 == currentI)) booleanSwitch = true
               }
               else {
@@ -129,14 +131,23 @@ object Main extends App {
                         }
                       }
                       checker.clearGreen()
-                      if (checker.spaceOccupancy(currentI)(currentJ) < 0) checker.spaceOccupancy(i)(j) = -player
+                      if (checker.spaceOccupancy(currentI)(currentJ) < 0) {
+                        checker.spaceOccupancy(i)(j) = -player
+                      }
                       else checker.spaceOccupancy(i)(j) = player
                       checker.spaceOccupancy(currentI)(currentJ) = 0
                       currentI = i
                       currentJ = j
-                      println("bugg",player,checker.spaceOccupancy(i)(j))
 
-                      if (checker.hopLeftClick(player, currentI, currentJ, bKing = false) == 0) {
+                      var ihopK: Int =0
+                      var ihop: Int = checker.hopLeftClick(player, currentI, currentJ, bKing)
+                      if (checker.spaceOccupancy(i)(j) < 0){
+                        ihopK += checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
+                      }
+                      println("main3 ihop,ihopK : ",ihop,ihopK)
+                      ihop += ihopK
+
+                      if (ihop == 0) {
                         bSwitch = true
                         bLock = false
                       }

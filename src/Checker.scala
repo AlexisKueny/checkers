@@ -82,11 +82,12 @@ class Checker {
       }
       else {
         //hop over a checker
-        if (i <= 1) return 0
+        if (i <= 1 && !bKing) return 0
         if (bip) {
           //i is even
           bSwitch = false
           if (bKing) {
+            println("chGeven1_spaceOccupancy(i - 1)(j)_player : ",spaceOccupancy(i - 1)(j),player)
             if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true
           }
           else {
@@ -101,6 +102,7 @@ class Checker {
           if (j != 3) {
             bSwitch = false
             if (bKing){
+              println("chGeven2_spaceOccupancy(i - 1)(j+1)_player : ",spaceOccupancy(i - 1)(j+1),player)
               if (math.abs(spaceOccupancy(i - 1)(j + 1)) == player) bSwitch = true
             }
             else{
@@ -116,10 +118,12 @@ class Checker {
           }
         }
         else {
+          println("even_bKing",bKing)
           //i is odd
           if (j - 1 >= 0) {
             bSwitch = false
             if (bKing){
+              println("chGodd1_spaceOccupancy(i - 1)(j-1)_player : ",spaceOccupancy(i - 1)(j-1),player)
               if (math.abs(spaceOccupancy(i - 1)(j - 1)) == player) bSwitch = true
             }
             else{
@@ -135,6 +139,7 @@ class Checker {
           if (j < 3) {
             bSwitch = false
             if (bKing){
+              println("chGodd2_spaceOccupancy(i - 1)(j)_player : ",spaceOccupancy(i - 1)(j),player)
               if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true
             }
             else{
@@ -276,6 +281,7 @@ class Checker {
     var iRet: Int = 0
     var ir: Int = 0
     iRet = checkGreen(iStart, jStart, badj = false, player,bKing)
+    println("hoplef_iRet : ",iRet)
     if (iRet == 0) return iRet
     if (player == 2) { //red?
       for (is <- iStart - 2 to 2 by -2) {
