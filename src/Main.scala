@@ -38,7 +38,7 @@ object Main extends App {
         //checker initialization
         checker.checkerInit()
         gamePhase = 1
-        checker.checkerTest()
+//        checker.checkerTest()
         boardWithCheckers()
         player = 2
         adversePlayer = 1
@@ -144,7 +144,6 @@ object Main extends App {
                       if (checker.spaceOccupancy(i)(j) < 0){
                         ihopK += checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
                       }
-                      println("main3 ihop,ihopK : ",ihop,ihopK)
                       ihop += ihopK
 
                       if (ihop == 0) {

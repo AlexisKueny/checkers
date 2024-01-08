@@ -320,14 +320,14 @@ class Checker {
     for (i <- 0 to 7; j <- 0 to 3) {
       if (spaceOccupancy(i)(j) != 3) spaceOccupancy(i)(j) = 0
     }
-    spaceOccupancy(4)(2) = -2
-    spaceOccupancy(1)(0) = -2
-    spaceOccupancy(1)(1) = 1
-    spaceOccupancy(2)(0) = 1
-    spaceOccupancy(5)(3) = 1
+////    spaceOccupancy(4)(2) = -2
+////    spaceOccupancy(1)(0) = -2
+////    spaceOccupancy(1)(1) = 1
+////    spaceOccupancy(2)(0) = 1
+////    spaceOccupancy(5)(3) = 1
+////    spaceOccupancy(3)(2) = 1
+    spaceOccupancy(2)(1) = -2
     spaceOccupancy(3)(2) = 1
-    spaceOccupancy(3)(3) = 1
-    spaceOccupancy(4)(1) = 1
-    spaceOccupancy(6)(1) = 2
+    spaceOccupancy(5)(2) = 1
   }
 }
