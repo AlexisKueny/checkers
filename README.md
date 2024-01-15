@@ -17,3 +17,4 @@ Once these input signals are processed, they are returned to the "Main" object, 
 In between the input and output processes lies the class Checker, responsible for all the technical side of things as well as all the necessary supporting requirements. The primary component of the Checker class, and by extension the game itself is the array "spaceOccupancy". This array is representative of all the interactive checkers in the framework of the game, holding information for each one of them. Every time a trigger is made, in the context of a mouse click, the array is updated. This in turn returns signals of its own back to the Main, subesquently used to update the graphical situation according to recent events.
 
 ### *Screenshots*
+![image](https://github.com/AlexisKueny/checkers/assets/150804737/f6e9b04e-0391-4ba1-be7e-ec46e594f036)
