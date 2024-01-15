@@ -4,7 +4,7 @@ import java.awt.event.{MouseAdapter, MouseEvent}
 
 object Main extends App {
   //Declarations/////////////////////////////////////////
-  val display: FunGraphics = new FunGraphics(1201, 801)
+  val display: FunGraphics = new FunGraphics(1201, 851)
   var gamePhase: Int = 0
   val checker: Checker = new Checker
   var player: Int = 0
@@ -32,13 +32,14 @@ object Main extends App {
       bInGame = tuple._1
       val i = tuple._2
       val j = tuple._3
+      println(px,py,i,j,bInGame)
 
       //gamephase = 0 until start button pressed
       if ((gamePhase == 0) && (50 to 150).contains(px) && (50 to 150).contains(py)) {
         //checker initialization
         checker.checkerInit()
         gamePhase = 1
-//        checker.checkerTest()
+        //checker.checkerTest()
         boardWithCheckers()
         player = 2
         adversePlayer = 1
@@ -61,12 +62,12 @@ object Main extends App {
                   //Test if an adjacent space is green
                   if (math.abs(checker.spaceOccupancy(i)(j)) == player) {
                     var ira = 0
-                    ira = checker.checkGreen(i, j, badj = true, player, bKing = false)
-                    if (checker.spaceOccupancy(i)(j) < 0) checker.checkGreen(i, j, badj = true, adversePlayer, bKing = false)
+                    ira = checker.checkGreen(i, j, badj = true, player,adversePlayer)
+                    if (checker.spaceOccupancy(i)(j) < 0) ira += checker.checkGreen(i, j, badj = true, adversePlayer,adversePlayer)
                     //Test if hop over a checker
                     var ir1 = 0
-                    checker.hopLeftClick(player, currentI, currentJ, bKing = false)
-                    if (checker.spaceOccupancy(i)(j) < 0) checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
+                    ir1=checker.hopLeftClick(player, currentI, currentJ, bKing = false)    //on cherche green vers l'avant
+                    if (checker.spaceOccupancy(i)(j) < 0) ir1 += checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true) //si bKing on cherche green vers l'arrière
                     boardWithCheckers()
                   }
                 }
@@ -74,6 +75,7 @@ object Main extends App {
             }
             //mouse right click
             if (mb == 3) {
+              bKing=false
               var iHop: Int = 2
               var iHopS2: Int = 1
               if (player == 2) {
@@ -140,11 +142,8 @@ object Main extends App {
                       currentJ = j
 
                       var ihopK: Int =0
-                      var ihop: Int = checker.hopLeftClick(player, currentI, currentJ, bKing)
-                      if (checker.spaceOccupancy(i)(j) < 0){
-                        ihopK += checker.hopLeftClick(adversePlayer, currentI, currentJ, bKing = true)
-                      }
-                      ihop += ihopK
+                      var ihop: Int = checker.hopLeftClick(player, currentI, currentJ, false)
+                      if (checker.spaceOccupancy(i)(j) < 0) ihop += checker.hopLeftClick(player, currentI, currentJ, true) //King
 
                       if (ihop == 0) {
                         bSwitch = true
@@ -182,14 +181,14 @@ object Main extends App {
 
   //methods///////////////////////////////////////////////
   def drawEmptyBoard(): Unit = {
-    for (x <- 0 to 200; y <- 0 to 800) display.setPixel(x, y, new Color(150, 121, 105))
-    for (x <- 301 to 999 by 200; y <- 0 to 800 by 200)
+    for (x <- 0 to 199; y <- 0 to 799) display.setPixel(x, y, new Color(150, 121, 105))
+    for (x <- 300 to 900 by 200; y <- 0 to 700 by 200)
       for (x <- x to x + 99; y <- y to y + 99) display.setPixel(x, y)
-    for (x <- 201 to 999 by 200; y <- 100 to 800 by 200)
+    for (x <- 200 to 800 by 200; y <- 100 to 700 by 200)
       for (x <- x to x + 99; y <- y to y + 99) display.setPixel(x, y)
-    for (x <- 1000 to 1200; y <- 0 to 800) display.setPixel(x, y, new Color(150, 121, 105))
+    for (x <- 1000 to 1199; y <- 0 to 799) display.setPixel(x, y, new Color(150, 121, 105))
     //start button
-    for (x <- 50 to 150; y <- 50 to 150) display.setPixel(x, y, new Color(92, 64, 51))
+    for (x <- 50 to 149; y <- 50 to 149) display.setPixel(x, y, new Color(92, 64, 51))
     display.drawString(60, 100, "Start", Color.black, 40)
   }
 
@@ -237,3 +236,4 @@ object Main extends App {
 
   //...
 }
+

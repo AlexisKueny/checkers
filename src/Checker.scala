@@ -1,4 +1,5 @@
-import Main.{checker, display}
+import Main.{adversePlayer, checker, display}
+
 import java.awt.Color
 
 class Checker {
@@ -10,6 +11,7 @@ class Checker {
   val colB: Color = new Color(192, 192, 192) //spaceOccupancy = 2
   val colG: Color = Color.green
 
+  // Define spaceCenter(point NW of the space) and initialize spaceOccupancy
   def checkerInit(): Unit = {
     var x: Int = 100
     var y: Int = -100
@@ -30,8 +32,8 @@ class Checker {
   //Returns i and j based on px and py mouse position
   def checkSpace(px: Int, py: Int, player: Int): (Boolean, Int, Int) = {
     for (i <- 0 to 7; j <- 0 to 3) {
-      if ((px >= spaceCenterX(i)(j)) && (px <= spaceCenterX(i)(j) + 100)) {
-        if ((py >= spaceCenterY(i)(j)) && (py <= spaceCenterY(i)(j) + 100)) {
+      if ((px >= spaceCenterX(i)(j)) && (px <= spaceCenterX(i)(j) + 99)) {
+        if ((py >= spaceCenterY(i)(j)) && (py <= spaceCenterY(i)(j) + 99)) {
           if (math.abs(spaceOccupancy(i)(j)) == player) return (true, i, j)
           else return (true, i, j)
         }
@@ -40,9 +42,8 @@ class Checker {
     (false, -1, -1)
   }
 
-  def checkGreen(i: Int, j: Int, badj: Boolean, player: Int, bKing : Boolean): Int = {
-    var adversePlayer = 2
-    if (player == 2) adversePlayer = 1
+  //Define possible shifting in green
+  def checkGreen(i: Int, j: Int, badj: Boolean, player: Int, advplayer: Int): Int = {
     var ir = 0
     var bip = false
     var bSwitch = false
@@ -51,7 +52,7 @@ class Checker {
       //player black
       if (badj) {
         //scan adjacent empty spaces
-        if (i == 0) return 0
+        if (i == 0) return 0  //test top
         if (bip) {
           //i is even
           if (spaceOccupancy(i - 1)(j) == 0) {
@@ -82,18 +83,13 @@ class Checker {
       }
       else {
         //hop over a checker
-        if (i <= 1 && !bKing) return 0
+        if (i <= 1 ) return 0
         if (bip) {
           //i is even
           bSwitch = false
-          if (bKing) {
-            println("chGeven1_spaceOccupancy(i - 1)(j)_player : ",spaceOccupancy(i - 1)(j),player)
-            if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true
-          }
-          else {
-            if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
-          }
-          if (bSwitch) { //?
+          if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
+          //          }
+          if (bSwitch&&j-1>=0) { //?
             if ((spaceOccupancy(i - 2)(j-1) == 0) || (spaceOccupancy(i - 2)(j-1) == 3)) {
               ir = 40
               spaceOccupancy(i - 2)(j-1) = 3
@@ -101,13 +97,8 @@ class Checker {
           }
           if (j != 3) {
             bSwitch = false
-            if (bKing){
-              println("chGeven2_spaceOccupancy(i - 1)(j+1)_player : ",spaceOccupancy(i - 1)(j+1),player)
-              if (math.abs(spaceOccupancy(i - 1)(j + 1)) == player) bSwitch = true
-            }
-            else{
-              if (math.abs(spaceOccupancy(i - 1)(j + 1)) == adversePlayer) bSwitch = true
-            }
+            if (math.abs(spaceOccupancy(i - 1)(j + 1)) == adversePlayer) bSwitch = true
+            //            }
             if (bSwitch) {
               if ((spaceOccupancy(i - 2)(j + 1) == 0) || (spaceOccupancy(i - 2)(j + 1) == 3)) {
                 if (ir == 0) ir = 42
@@ -118,17 +109,11 @@ class Checker {
           }
         }
         else {
-          println("even_bKing",bKing)
           //i is odd
           if (j - 1 >= 0) {
             bSwitch = false
-            if (bKing){
-              println("chGodd1_spaceOccupancy(i - 1)(j-1)_player : ",spaceOccupancy(i - 1)(j-1),player)
-              if (math.abs(spaceOccupancy(i - 1)(j - 1)) == player) bSwitch = true
-            }
-            else{
-              if (math.abs(spaceOccupancy(i - 1)(j - 1)) == adversePlayer) bSwitch = true
-            }
+            if (math.abs(spaceOccupancy(i - 1)(j - 1)) == adversePlayer) bSwitch = true
+            //            }
             if (bSwitch) {
               if ((spaceOccupancy(i - 2)(j - 1) == 0) || (spaceOccupancy(i - 2)(j - 1) == 3)) {
                 ir = 41
@@ -138,13 +123,7 @@ class Checker {
           }
           if (j < 3) {
             bSwitch = false
-            if (bKing){
-              println("chGodd2_spaceOccupancy(i - 1)(j)_player : ",spaceOccupancy(i - 1)(j),player)
-              if (math.abs(spaceOccupancy(i - 1)(j)) == player) bSwitch = true
-            }
-            else{
-              if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
-            }
+            if (math.abs(spaceOccupancy(i - 1)(j)) == adversePlayer) bSwitch = true
             if (bSwitch) {
               if ((spaceOccupancy(i - 2)(j + 1) == 0) || (spaceOccupancy(i - 2)(j + 1) == 3)) {
                 spaceOccupancy(i - 2)(j + 1) = 3
@@ -197,12 +176,7 @@ class Checker {
         //i is even
         if (j >= 1) {
           bSwitch = false
-          if(bKing){
-            if (math.abs(spaceOccupancy(i + 1)(j)) == player) bSwitch = true
-          }
-          else{
-            if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
-          }
+          if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
           if (bSwitch) {
             if ((spaceOccupancy(i + 2)(j - 1) == 0) || (spaceOccupancy(i + 2)(j - 1) == 3)) {
               ir = 40
@@ -212,12 +186,7 @@ class Checker {
         }
         if (j != 3) {
           bSwitch = false
-          if(bKing){
-            if (math.abs(spaceOccupancy(i + 1)(j + 1)) == player) bSwitch = true
-          }
-          else{
-            if (math.abs(spaceOccupancy(i + 1)(j+1)) == adversePlayer) bSwitch = true
-          }
+          if (math.abs(spaceOccupancy(i + 1)(j+1)) == adversePlayer) bSwitch = true
           if (bSwitch) {
             if ((spaceOccupancy(i + 2)(j + 1) == 0) || (spaceOccupancy(i + 2)(j + 1) == 3)) {
               if (ir == 40) ir = 50
@@ -231,12 +200,8 @@ class Checker {
         //i is odd
         if (j != 3) {
           bSwitch = false
-          if(bKing){
-            if (math.abs(spaceOccupancy(i + 1)(j)) == player) bSwitch = true
-          }
-          else{
-            if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
-          }
+          if (math.abs(spaceOccupancy(i + 1)(j)) == adversePlayer) bSwitch = true
+          //          }
           if (bSwitch) {
             if ((spaceOccupancy(i + 2)(j + 1) == 0) || (spaceOccupancy(i + 2)(j + 1) == 3)) {
               ir = 41
@@ -246,12 +211,7 @@ class Checker {
         }
         if (j - 1 >= 0) {
           bSwitch = false
-          if(bKing){
-            if (math.abs(spaceOccupancy(i + 1)(j - 1)) == player) bSwitch = true
-          }
-          else{
-            if (math.abs(spaceOccupancy(i + 1)(j - 1)) == adversePlayer) bSwitch = true
-          }
+          if (math.abs(spaceOccupancy(i + 1)(j - 1)) == adversePlayer) bSwitch = true
           if (bSwitch) {
             if ((spaceOccupancy(i + 2)(j - 1) == 0) || (spaceOccupancy(i + 2)(j - 1) == 3)) {
               spaceOccupancy(i + 2)(j - 1) = 3
@@ -265,6 +225,7 @@ class Checker {
     ir
   }
 
+  //Erase all green spaces
   def clearGreen(): Unit = {
     for (i <- 0 to 7; j <- 0 to 3) {
       if (spaceOccupancy(i)(j) == 3) {
@@ -276,58 +237,60 @@ class Checker {
     }
   }
 
-  //Multiple hops
+  //CheckGreen for multiple hops
   def hopLeftClick(player: Int, iStart: Int, jStart: Int,bKing: Boolean): Int = {
     var iRet: Int = 0
     var ir: Int = 0
-    iRet = checkGreen(iStart, jStart, badj = false, player,bKing)
-    println("hoplef_iRet : ",iRet)
+    if(bKing) {
+      iRet += checkGreen(iStart, jStart, badj = false, adversePlayer,adversePlayer)
+    }
+    else {
+      iRet += checkGreen(iStart, jStart, badj = false, player,adversePlayer)
+    }
     if (iRet == 0) return iRet
-    if (player == 2) { //red?
-      for (is <- iStart - 2 to 2 by -2) {
+    if (player == 2 ) { //red
+      for (is <- iStart - 2 to 0 by -2) {
         iRet = 0
         for (js <- 0 to 3) {
           if (spaceOccupancy(is)(js) == 3) {
-            ir = checkGreen(is, js, badj = false, player,bKing)
-            iRet += ir
+            if(bKing) {
+              iRet += checkGreen(is, js, badj = false, adversePlayer,adversePlayer)
+            }
+            else {
+              iRet += checkGreen(is, js, badj = false, player,adversePlayer)
+            }
           }
         }
         if (iRet == 0) return 1
       }
       1
     }
-    else {
-      //player 1
+    //if (player == 1 || bKing){ //white
+    if(player==1 ) {
+      //player 1 grey
       for (is <- iStart + 2 to 5 by 2) {
         iRet = 0
         for (js <- 0 to 3) {
           if (spaceOccupancy(is)(js) == 3) {
-            ir = checkGreen(is, js, badj = false, player,bKing)
-            iRet += ir
+            if(bKing) {
+              iRet += checkGreen(is, js, badj = false, adversePlayer,adversePlayer)
+            }
+            else {
+              iRet += checkGreen(is, js, badj = false, player,adversePlayer)
+            }
           }
         }
         if (iRet == 0) return 1
       }
-      1
     }
+    1
+
   }
+
+  //Change the checker in King
   def kingPiece (i: Int,j: Int,player: Int): Unit = {
     if (player == 2) spaceOccupancy(i)(j) = -2
     else spaceOccupancy(i)(j) = -1
   }
-
-  def checkerTest(): Unit = {
-    for (i <- 0 to 7; j <- 0 to 3) {
-      if (spaceOccupancy(i)(j) != 3) spaceOccupancy(i)(j) = 0
-    }
-////    spaceOccupancy(4)(2) = -2
-////    spaceOccupancy(1)(0) = -2
-////    spaceOccupancy(1)(1) = 1
-////    spaceOccupancy(2)(0) = 1
-////    spaceOccupancy(5)(3) = 1
-////    spaceOccupancy(3)(2) = 1
-    spaceOccupancy(2)(1) = -2
-    spaceOccupancy(3)(2) = 1
-    spaceOccupancy(5)(2) = 1
-  }
 }
+
